@@ -25,18 +25,39 @@ body
 
 .equip-box .img-hold
 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
     width: 150px;
     height: 150px;
     background-color: #3162ac;
     border-radius: 50%;
 }
 
-.img-hold img
+.equip-box .img-hold>div
+{
+    display: flex;
+    justify-content: center;
+}
+
+.img-hold .top-img
+{
+    height: 71%;
+    align-items: flex-end;
+}
+
+.top-img img
 {
     width: 60px;
+}
+
+.img-hold .bot-imgs
+{
+    height: 29%;
+    align-items: center;
+}
+
+.bot-imgs .icon
+{
+    width: 20px;
 }
 
 .info .name
