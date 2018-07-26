@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+body
+{
+    margin: 0;
+    font-size: 0;
+}
+
+.equip-box
+{
+    height: 150px;
+}
+
+.equip-box>div
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.equip-box .img-hold
+{
+    height: 150px;
+    width: 150px;
+}
+
+.equip-box img
+{
+    width: 100%;
+}
+
+.equip-box .title
+{
+    font-size: 20px;
+}
