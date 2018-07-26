@@ -1,0 +1,86 @@
+/*-- equip box --*/
+.equip-box
+{
+    display: inline-block;
+    margin: 20px;
+    color: #3162ac;
+    text-align: center;
+}
+
+/*-- image circle section --*/
+.equip-box .img-hold
+{
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: #3162ac;
+    border-radius: 50%;
+}
+
+.equip-box .img-hold>div
+{
+    display: flex;
+    justify-content: center;
+}
+
+.img-hold .top-img
+{
+    height: 71%;
+    align-items: flex-end;
+}
+
+.top-img img
+{
+    width: 60px;
+}
+
+.img-hold .bot-imgs
+{
+    height: 29%;
+    align-items: center;
+}
+
+.bot-imgs .icon
+{
+    width: 20px;
+}
+
+/*-- stats section --*/
+.info .name
+{
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 8px 0 9px 0;
+}
+
+.info .divider
+{
+    display: inline-block;
+    width: 55%;
+    border-bottom: 3px dashed #3162ac;
+}
+
+.stats
+{
+    width: 160px;
+    margin: auto;
+    padding-top: 9px;
+}
+
+.stat-box
+{
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+}
+
+.stat-box .label
+{
+    font-size: 9px;
+    height: 8.5px;
+}
+
+.stat-box .stat
+{
+    font-size: 18px;
+}
