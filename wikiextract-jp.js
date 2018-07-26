@@ -20,6 +20,14 @@ var torpedoOptions={
             return element.innerText.slice(1);
         },
 
+        6:(element)=>{
+            return parseInt(element.innerText);
+        },
+
+        7:(element)=>{
+            return parseInt(element.innerText);
+        },
+
         13:(element)=>{
             if (element.innerText=="通常弾")
             {
@@ -33,14 +41,14 @@ var torpedoOptions={
     calculations:(data)=>{
         var dmg=data.dmg.split("x");
         data.dmg=parseInt(dmg[0]);
+        data.dmg10=parseInt(data.dmg10.split("x")[0]);
         data.shot=parseInt(dmg[1]);
 
-        data.dmg10=data.dmg10.split("x")[0];
         data.burst=data.dmg*data.shot;
         data.burst10=data.dmg10*data.shot;
 
-        data.dps=data.dmg/data.reload;
-        data.dps10=data.dmg10/data.reload10;
+        data.dps=Number((data.burst/data.reload).toFixed(2));
+        data.dps10=Number((data.burst10/data.reload10).toFixed(2));
     }
 };
 
@@ -84,5 +92,5 @@ function jpWikiExtract(table,extractOptions)
         res.push(currentRowData);
     }
 
-    return res;
+    return JSON.stringify(res);
 }
