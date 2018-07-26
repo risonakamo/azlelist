@@ -103,5 +103,6 @@ function jpWikiExtract(table,extractOptions)
         res.push(currentRowData);
     }
 
-    return res;
+    // return res;
+    return JSON.stringify(res);
 }

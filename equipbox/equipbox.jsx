@@ -1,4 +1,18 @@
-class EquipBox extends React.Component
+//EquipBoxControl(object-array data)
+//data: an array of equip data objects
+class EquipBoxControl extends React.Component
+{
+  render()
+  {
+    return this.props.data.map((x,i)=>{
+      return <TorpBox data={x} key={i}/>;
+    });
+  }
+}
+
+//EquipBox(object data)
+//data: a single equipdata object
+class TorpBox extends React.Component
 {
   render()
   {
