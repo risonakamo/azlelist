@@ -21,11 +21,11 @@ var torpedoOptions={
         },
 
         6:(element)=>{
-            return parseInt(element.innerText);
+            return parseFloat(element.innerText);
         },
 
         7:(element)=>{
-            return parseInt(element.innerText);
+            return parseFloat(element.innerText);
         },
 
         13:(element)=>{
@@ -39,16 +39,27 @@ var torpedoOptions={
     },
 
     calculations:(data)=>{
-        var dmg=data.dmg.split("x");
-        data.dmg=parseInt(dmg[0]);
-        data.dmg10=parseInt(data.dmg10.split("x")[0]);
-        data.shot=parseInt(dmg[1]);
+        //split and calculate dmg/shots
+        var dmgSplit=data.dmg.split("x");
+        data.dmg=parseInt(dmgSplit[0]);
+        data.shot=parseInt(dmgSplit[1]);
 
+        //calculate burst and dps
         data.burst=data.dmg*data.shot;
-        data.burst10=data.dmg10*data.shot;
-
         data.dps=Number((data.burst/data.reload).toFixed(2));
-        data.dps10=Number((data.burst10/data.reload10).toFixed(2));
+
+        //seperate and calculate upgraded stats
+        data.upgraded={
+            dmg:parseInt(data.dmg10.split("x")[0]),
+            reload:data.reload10
+        };
+
+        data.upgraded.burst=data.upgraded.dmg*data.shot;
+        data.upgraded.dps=Number((data.upgraded.burst/data.upgraded.reload).toFixed(2));
+
+        //clean up
+        delete data.dmg10;
+        delete data.reload10;
     }
 };
 
@@ -92,5 +103,5 @@ function jpWikiExtract(table,extractOptions)
         res.push(currentRowData);
     }
 
-    return JSON.stringify(res);
+    return res;
 }
