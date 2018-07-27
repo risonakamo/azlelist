@@ -5,19 +5,19 @@ class EquipBoxControl extends React.Component
   render()
   {
     return this.props.data.map((x,i)=>{
-      return <TorpBox data={x} key={i}/>;
+      return <EquipBox data={x} key={i} equipType="torp"/>;
     });
   }
 }
 
-//EquipBox(object data)
+//EquipBox(object data,string equipType)
 //data: a single equipdata object
-class TorpBox extends React.Component
+class EquipBox extends React.Component
 {
   render()
   {
     return (
-      <div className="equip-box">
+      <div className={`equip-box ${this.props.equipType}`}>
         <div className="img-hold">
           <div className="top-img">
             <img src={this.props.data.img}/>
@@ -35,10 +35,17 @@ class TorpBox extends React.Component
               <div className="stat">{this.props.data.dmg}x{this.props.data.shot}</div>
             </div>
 
-            <div className="stat-box">
-              <div className="label">BURST</div>
-              <div className="stat">{this.props.data.burst}/vol</div>
-            </div>
+            {(()=>{
+              if (this.props.data.burst)
+              {
+                return (
+                  <div className="stat-box">
+                    <div className="label">BURST</div>
+                    <div className="stat">{this.props.data.burst}/vol</div>
+                  </div>
+                );
+              }
+            })()}
 
             <div className="stat-box">
               <div className="label">RELOAD</div>

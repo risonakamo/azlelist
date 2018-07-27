@@ -1,8 +1,20 @@
+//EquipBoxControl(object-array data)
+//data: an array of equip data objects
+class EquipBoxControl extends React.Component {
+  render() {
+    return this.props.data.map((x, i) => {
+      return React.createElement(EquipBox, { data: x, key: i, equipType: "torp" });
+    });
+  }
+}
+
+//EquipBox(object data,string equipType)
+//data: a single equipdata object
 class EquipBox extends React.Component {
   render() {
     return React.createElement(
       "div",
-      { className: "equip-box" },
+      { className: `equip-box ${this.props.equipType}` },
       React.createElement(
         "div",
         { className: "img-hold" },
@@ -41,21 +53,25 @@ class EquipBox extends React.Component {
               this.props.data.shot
             )
           ),
-          React.createElement(
-            "div",
-            { className: "stat-box" },
-            React.createElement(
-              "div",
-              { className: "label" },
-              "BURST"
-            ),
-            React.createElement(
-              "div",
-              { className: "stat" },
-              this.props.data.burst,
-              "/vol"
-            )
-          ),
+          (() => {
+            if (this.props.data.burst) {
+              return React.createElement(
+                "div",
+                { className: "stat-box" },
+                React.createElement(
+                  "div",
+                  { className: "label" },
+                  "BURST"
+                ),
+                React.createElement(
+                  "div",
+                  { className: "stat" },
+                  this.props.data.burst,
+                  "/vol"
+                )
+              );
+            }
+          })(),
           React.createElement(
             "div",
             { className: "stat-box" },
