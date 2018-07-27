@@ -28,21 +28,6 @@
     border-color: #f5b200;
 }
 
-.equip-box.fighter
-{
-    color: #48b063;
-}
-
-.fighter .img-hold
-{
-    background-color: #48b063;
-}
-
-.fighter .info .divider
-{
-    border-color: #48b063;
-}
-
 .equip-box.dive
 {
     color: #f16c6e;
@@ -101,4 +86,49 @@
 .bb-gun .info .divider
 {
     border-color: #bf252a;
+}
+
+.equip-box.aa-gun
+{
+    color: #39c654;
+}
+
+.aa-gun .img-hold
+{
+    background-color: #39c654;
+}
+
+.aa-gun .info .divider
+{
+    border-color: #39c654;
+}
+
+.equip-box.fighter
+{
+    color: #48b063;
+}
+
+.fighter .img-hold
+{
+    background-color: #48b063;
+}
+
+.fighter .info .divider
+{
+    border-color: #48b063;
+}
+
+.equip-box.bomber
+{
+    color: #2780c2;
+}
+
+.bomber .img-hold
+{
+    background-color: #2780c2;
+}
+
+.bomber .info .divider
+{
+    border-color: #2780c2;
 }
