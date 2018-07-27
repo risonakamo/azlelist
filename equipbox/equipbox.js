@@ -1,9 +1,10 @@
-//EquipBoxControl(object-array data)
+//EquipBoxControl(object-array data,string equipType)
 //data: an array of equip data objects
+//equipType: the string class of equips of the data received
 class EquipBoxControl extends React.Component {
   render() {
     return this.props.data.map((x, i) => {
-      return React.createElement(EquipBox, { data: x, key: i, equipType: "torp", upgraded: 1 });
+      return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType });
     });
   }
 }
@@ -38,6 +39,13 @@ class EquipBox extends React.Component {
 
   render() {
     var upgradeableStats = this.getUpgraded(this.props.upgraded);
+
+    var dmgText;
+    if (!this.props.data.shot) {
+      dmgText = upgradeableStats.dmg;
+    } else {
+      dmgText = `${upgradeableStats.dmg}x${this.props.data.shot}`;
+    }
 
     return React.createElement(
       "div",
@@ -75,9 +83,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              upgradeableStats.dmg,
-              "x",
-              this.props.data.shot
+              dmgText
             )
           ),
           (() => {
@@ -94,7 +100,7 @@ class EquipBox extends React.Component {
                   "div",
                   { className: "stat" },
                   upgradeableStats.burst,
-                  "/vol"
+                  "/atk"
                 )
               );
             }

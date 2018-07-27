@@ -1,11 +1,12 @@
-//EquipBoxControl(object-array data)
+//EquipBoxControl(object-array data,string equipType)
 //data: an array of equip data objects
+//equipType: the string class of equips of the data received
 class EquipBoxControl extends React.Component
 {
   render()
   {
     return this.props.data.map((x,i)=>{
-      return <EquipBox data={x} key={i} equipType="torp"/>;
+      return <EquipBox data={x} key={i} equipType={this.props.equipType}/>;
     });
   }
 }
@@ -46,6 +47,17 @@ class EquipBox extends React.Component
   {
     var upgradeableStats=this.getUpgraded(this.props.upgraded);
 
+    var dmgText;
+    if (!this.props.data.shot)
+    {
+      dmgText=upgradeableStats.dmg;
+    }
+
+    else
+    {
+      dmgText=`${upgradeableStats.dmg}x${this.props.data.shot}`;
+    }
+
     return (
       <div className={`equip-box ${this.props.equipType}`}>
         <div className="img-hold">
@@ -62,7 +74,7 @@ class EquipBox extends React.Component
           <div className="stats">
             <div className="stat-box">
               <div className="label">DMG</div>
-              <div className="stat">{upgradeableStats.dmg}x{this.props.data.shot}</div>
+              <div className="stat">{dmgText}</div>
             </div>
 
             {(()=>{
@@ -71,7 +83,7 @@ class EquipBox extends React.Component
                 return (
                   <div className="stat-box">
                     <div className="label">BURST</div>
-                    <div className="stat">{upgradeableStats.burst}/vol</div>
+                    <div className="stat">{upgradeableStats.burst}/atk</div>
                   </div>
                 );
               }

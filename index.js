@@ -2,8 +2,8 @@ window.onload=main;
 
 function main()
 {
-    dataLoad("wikidata/torpdata.json",(data)=>{
-        ReactDOM.render(React.createElement(EquipBoxControl,{data}),document.querySelector(".equip-boxes"));
+    dataLoad("wikidata/dive.json",(data)=>{
+        ReactDOM.render(React.createElement(EquipBoxControl,{data,equipType:"dive"}),document.querySelector(".equip-boxes"));
     });
 }
 
