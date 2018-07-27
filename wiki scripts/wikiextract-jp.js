@@ -1,3 +1,4 @@
+//usable on torpedoes,sub torpedoes
 var torpedoOptions={
     cols:{
         0:"img",
@@ -39,28 +40,62 @@ var torpedoOptions={
     },
 
     calculations:(data)=>{
-        //split and calculate dmg/shots
-        var dmgSplit=data.dmg.split("x");
-        data.dmg=parseInt(dmgSplit[0]);
-        data.shot=parseInt(dmgSplit[1]);
-
-        //calculate burst and dps
-        data.burst=data.dmg*data.shot;
-        data.dps=Number((data.burst/data.reload).toFixed(2));
-
-        //seperate and calculate upgraded stats
-        data.upgraded={
-            dmg:parseInt(data.dmg10.split("x")[0]),
-            reload:data.reload10
-        };
-
-        data.upgraded.burst=data.upgraded.dmg*data.shot;
-        data.upgraded.dps=Number((data.upgraded.burst/data.upgraded.reload).toFixed(2));
-
-        //clean up
-        delete data.dmg10;
-        delete data.reload10;
+        standardDataCalc(data);
     }
+};
+
+var gunOptions={
+    cols:{
+        0:"img",
+        1:"name",
+        3:"rarity",
+        4:"dmg",
+        5:"dmg10",
+        6:"reload",
+        7:"reload10",
+        14:"type"
+    },
+
+    modifiers:{
+        0:(element)=>{
+            return element.firstChild.src;
+        },
+
+        3:(element)=>{
+            return element.innerText.slice(1);
+        },
+
+        6:(element)=>{
+            return parseFloat(element.innerText);
+        },
+
+        7:(element)=>{
+            return parseFloat(element.innerText);
+        },
+
+        14:(element)=>{
+            var type=element.innerText;
+            switch (type)
+            {
+                case "通常弾":
+                return 0;
+
+                case "徹甲弾":
+                return 1;
+
+                case "榴弾":
+                return 2;
+
+                case "三式弾":
+                return 3;
+
+                default:
+                return 4;
+            }
+        }
+    },
+
+    calculations:standardDataCalc
 };
 
 /*
@@ -105,4 +140,34 @@ function jpWikiExtract(table,extractOptions)
 
     // return res;
     return JSON.stringify(res);
+}
+
+//does common calc operations.
+//requires: dmg as NumberxNumber string,reload,dmg10 and reload10
+//splits dmg into dmg and shot
+//calcs burst and dps
+//seperates upgraded data into upgraded object
+function standardDataCalc(data)
+{
+    //split and calculate dmg/shots
+    var dmgSplit=data.dmg.split("x");
+    data.dmg=parseInt(dmgSplit[0]);
+    data.shot=parseInt(dmgSplit[1]);
+
+    //calculate burst and dps
+    data.burst=data.dmg*data.shot;
+    data.dps=Number((data.burst/data.reload).toFixed(2));
+
+    //seperate and calculate upgraded stats
+    data.upgraded={
+        dmg:parseInt(data.dmg10.split("x")[0]),
+        reload:data.reload10
+    };
+
+    data.upgraded.burst=data.upgraded.dmg*data.shot;
+    data.upgraded.dps=Number((data.upgraded.burst/data.upgraded.reload).toFixed(2));
+
+    //clean up
+    delete data.dmg10;
+    delete data.reload10;
 }
