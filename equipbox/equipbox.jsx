@@ -14,6 +14,48 @@ class EquipBoxControl extends React.Component
 //data: a single equipdata object
 class EquipBox extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.toggleUpgraded=this.toggleUpgraded.bind(this);
+
+    this.state={
+      dmg:this.props.data.dmg,
+      reload:this.props.data.reload,
+      burst:this.props.data.burst,
+      dps:this.props.data.dps
+    };
+
+    this.showingUpgraded=0;
+  }
+
+  toggleUpgraded()
+  {
+    if (this.showingUpgraded)
+    {
+      this.setState({
+        dmg:this.props.data.dmg,
+        reload:this.props.data.reload,
+        burst:this.props.data.burst,
+        dps:this.props.data.dps
+      });
+
+      this.showingUpgraded=0;
+    }
+
+    else
+    {
+      this.setState({
+        dmg:this.props.data.upgraded.dmg,
+        reload:this.props.data.upgraded.reload,
+        burst:this.props.data.upgraded.burst,
+        dps:this.props.data.upgraded.dps
+      });
+
+      this.showingUpgraded=1;
+    }
+  }
+
   render()
   {
     return (
@@ -32,7 +74,7 @@ class EquipBox extends React.Component
           <div className="stats">
             <div className="stat-box">
               <div className="label">DMG</div>
-              <div className="stat">{this.props.data.dmg}x{this.props.data.shot}</div>
+              <div className="stat">{this.state.dmg}x{this.props.data.shot}</div>
             </div>
 
             {(()=>{
@@ -41,7 +83,7 @@ class EquipBox extends React.Component
                 return (
                   <div className="stat-box">
                     <div className="label">BURST</div>
-                    <div className="stat">{this.props.data.burst}/vol</div>
+                    <div className="stat">{this.state.burst}/vol</div>
                   </div>
                 );
               }
@@ -49,12 +91,12 @@ class EquipBox extends React.Component
 
             <div className="stat-box">
               <div className="label">RELOAD</div>
-              <div className="stat">{this.props.data.reload}s</div>
+              <div className="stat">{this.state.reload}s</div>
             </div>
 
             <div className="stat-box">
               <div className="label">DPS</div>
-              <div className="stat">{this.props.data.dps}/s</div>
+              <div className="stat">{this.state.dps}/s</div>
             </div>
           </div>
         </div>

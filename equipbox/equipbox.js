@@ -11,6 +11,42 @@ class EquipBoxControl extends React.Component {
 //EquipBox(object data,string equipType)
 //data: a single equipdata object
 class EquipBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleUpgraded = this.toggleUpgraded.bind(this);
+
+    this.state = {
+      dmg: this.props.data.dmg,
+      reload: this.props.data.reload,
+      burst: this.props.data.burst,
+      dps: this.props.data.dps
+    };
+
+    this.showingUpgraded = 0;
+  }
+
+  toggleUpgraded() {
+    if (this.showingUpgraded) {
+      this.setState({
+        dmg: this.props.data.dmg,
+        reload: this.props.data.reload,
+        burst: this.props.data.burst,
+        dps: this.props.data.dps
+      });
+
+      this.showingUpgraded = 0;
+    } else {
+      this.setState({
+        dmg: this.props.data.upgraded.dmg,
+        reload: this.props.data.upgraded.reload,
+        burst: this.props.data.upgraded.burst,
+        dps: this.props.data.upgraded.dps
+      });
+
+      this.showingUpgraded = 1;
+    }
+  }
+
   render() {
     return React.createElement(
       "div",
@@ -48,7 +84,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              this.props.data.dmg,
+              this.state.dmg,
               "x",
               this.props.data.shot
             )
@@ -66,7 +102,7 @@ class EquipBox extends React.Component {
                 React.createElement(
                   "div",
                   { className: "stat" },
-                  this.props.data.burst,
+                  this.state.burst,
                   "/vol"
                 )
               );
@@ -83,7 +119,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              this.props.data.reload,
+              this.state.reload,
               "s"
             )
           ),
@@ -98,7 +134,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              this.props.data.dps,
+              this.state.dps,
               "/s"
             )
           )
