@@ -58,7 +58,12 @@ var gunOptions={
 
     modifiers:{
         0:(element)=>{
-            return element.firstChild.src;
+            if (element.firstChild)
+            {
+                return element.firstChild.src;
+            }
+
+            return null;
         },
 
         3:(element)=>{
@@ -96,6 +101,56 @@ var gunOptions={
     },
 
     calculations:standardDataCalc
+};
+
+var aaOptions={
+    cols:{
+        0:"img",
+        1:"name",
+        3:"rarity",
+        4:"dmg",
+        5:"dmg10",
+        6:"reload",
+        7:"reload10"
+    },
+
+    modifiers:{
+        0:(element)=>{
+            if (element.firstChild)
+            {
+                return element.firstChild.src;
+            }
+
+            return null;
+        },
+
+        3:(element)=>{
+            return element.innerText.slice(1);
+        },
+
+        6:(element)=>{
+            return parseFloat(element.innerText);
+        },
+
+        7:(element)=>{
+            return parseFloat(element.innerText);
+        }
+    },
+
+    calculations:(data)=>{
+        data.dmg=parseInt(data.dmg);
+        data.dps=Number((data.dmg/data.reload).toFixed(2));
+
+        data.upgraded={
+            dmg:parseInt(data.dmg10),
+            reload:data.reload10
+        };
+
+        data.upgraded.dps=Number((data.upgraded.dmg/data.reload10).toFixed(2));
+
+        delete data.dmg10;
+        delete data.reload10;
+    }
 };
 
 /*
