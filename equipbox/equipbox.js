@@ -3,51 +3,42 @@
 class EquipBoxControl extends React.Component {
   render() {
     return this.props.data.map((x, i) => {
-      return React.createElement(EquipBox, { data: x, key: i, equipType: "torp" });
+      return React.createElement(EquipBox, { data: x, key: i, equipType: "torp", upgraded: 1 });
     });
   }
 }
 
-//EquipBox(object data,string equipType)
+//EquipBox(object data,string equipType,bool upgraded)
 //data: a single equipdata object
+//equipType: class string of type of equipment
+//upgraded: 1 to use upgraded stats, 0 for normal
 class EquipBox extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleUpgraded = this.toggleUpgraded.bind(this);
+    this.getUpgraded = this.getUpgraded.bind(this);
+  }
 
-    this.state = {
+  getUpgraded(yes) {
+    if (yes) {
+      return {
+        dmg: this.props.data.upgraded.dmg,
+        reload: this.props.data.upgraded.reload,
+        burst: this.props.data.upgraded.burst,
+        dps: this.props.data.upgraded.dps
+      };
+    }
+
+    return {
       dmg: this.props.data.dmg,
       reload: this.props.data.reload,
       burst: this.props.data.burst,
       dps: this.props.data.dps
     };
-
-    this.showingUpgraded = 0;
-  }
-
-  toggleUpgraded() {
-    if (this.showingUpgraded) {
-      this.setState({
-        dmg: this.props.data.dmg,
-        reload: this.props.data.reload,
-        burst: this.props.data.burst,
-        dps: this.props.data.dps
-      });
-
-      this.showingUpgraded = 0;
-    } else {
-      this.setState({
-        dmg: this.props.data.upgraded.dmg,
-        reload: this.props.data.upgraded.reload,
-        burst: this.props.data.upgraded.burst,
-        dps: this.props.data.upgraded.dps
-      });
-
-      this.showingUpgraded = 1;
-    }
   }
 
   render() {
+    var upgradeableStats = this.getUpgraded(this.props.upgraded);
+
     return React.createElement(
       "div",
       { className: `equip-box ${this.props.equipType}` },
@@ -84,7 +75,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              this.state.dmg,
+              upgradeableStats.dmg,
               "x",
               this.props.data.shot
             )
@@ -102,7 +93,7 @@ class EquipBox extends React.Component {
                 React.createElement(
                   "div",
                   { className: "stat" },
-                  this.state.burst,
+                  upgradeableStats.burst,
                   "/vol"
                 )
               );
@@ -119,7 +110,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              this.state.reload,
+              upgradeableStats.reload,
               "s"
             )
           ),
@@ -134,7 +125,7 @@ class EquipBox extends React.Component {
             React.createElement(
               "div",
               { className: "stat" },
-              this.state.dps,
+              upgradeableStats.dps,
               "/s"
             )
           )

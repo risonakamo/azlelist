@@ -10,54 +10,42 @@ class EquipBoxControl extends React.Component
   }
 }
 
-//EquipBox(object data,string equipType)
+//EquipBox(object data,string equipType,bool upgraded)
 //data: a single equipdata object
+//equipType: class string of type of equipment
+//upgraded: 1 to use upgraded stats, 0 for normal
 class EquipBox extends React.Component
 {
   constructor(props)
   {
     super(props);
-    this.toggleUpgraded=this.toggleUpgraded.bind(this);
+    this.getUpgraded=this.getUpgraded.bind(this);
+  }
 
-    this.state={
+  getUpgraded(yes)
+  {
+    if (yes)
+    {
+      return {
+        dmg:this.props.data.upgraded.dmg,
+        reload:this.props.data.upgraded.reload,
+        burst:this.props.data.upgraded.burst,
+        dps:this.props.data.upgraded.dps
+      };
+    }
+
+    return {
       dmg:this.props.data.dmg,
       reload:this.props.data.reload,
       burst:this.props.data.burst,
       dps:this.props.data.dps
     };
-
-    this.showingUpgraded=0;
-  }
-
-  toggleUpgraded()
-  {
-    if (this.showingUpgraded)
-    {
-      this.setState({
-        dmg:this.props.data.dmg,
-        reload:this.props.data.reload,
-        burst:this.props.data.burst,
-        dps:this.props.data.dps
-      });
-
-      this.showingUpgraded=0;
-    }
-
-    else
-    {
-      this.setState({
-        dmg:this.props.data.upgraded.dmg,
-        reload:this.props.data.upgraded.reload,
-        burst:this.props.data.upgraded.burst,
-        dps:this.props.data.upgraded.dps
-      });
-
-      this.showingUpgraded=1;
-    }
   }
 
   render()
   {
+    var upgradeableStats=this.getUpgraded(this.props.upgraded);
+
     return (
       <div className={`equip-box ${this.props.equipType}`}>
         <div className="img-hold">
@@ -74,7 +62,7 @@ class EquipBox extends React.Component
           <div className="stats">
             <div className="stat-box">
               <div className="label">DMG</div>
-              <div className="stat">{this.state.dmg}x{this.props.data.shot}</div>
+              <div className="stat">{upgradeableStats.dmg}x{this.props.data.shot}</div>
             </div>
 
             {(()=>{
@@ -83,7 +71,7 @@ class EquipBox extends React.Component
                 return (
                   <div className="stat-box">
                     <div className="label">BURST</div>
-                    <div className="stat">{this.state.burst}/vol</div>
+                    <div className="stat">{upgradeableStats.burst}/vol</div>
                   </div>
                 );
               }
@@ -91,12 +79,12 @@ class EquipBox extends React.Component
 
             <div className="stat-box">
               <div className="label">RELOAD</div>
-              <div className="stat">{this.state.reload}s</div>
+              <div className="stat">{upgradeableStats.reload}s</div>
             </div>
 
             <div className="stat-box">
               <div className="label">DPS</div>
-              <div className="stat">{this.state.dps}/s</div>
+              <div className="stat">{upgradeableStats.dps}/s</div>
             </div>
           </div>
         </div>
