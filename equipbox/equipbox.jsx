@@ -98,6 +98,19 @@ class EquipBox extends React.Component
               <div className="label">DPS</div>
               <div className="stat">{upgradeableStats.dps}/s</div>
             </div>
+
+            {(()=>{
+              if (this.props.data.weapons)
+              {
+                return (
+                  <div className="stat-box weapon-box">
+                    {this.props.data.weapons.map((x,i)=>{
+                      return <div className="plane-weapon">{x}</div>;
+                    })}
+                  </div>
+                );
+              }
+            })()}
           </div>
         </div>
       </div>

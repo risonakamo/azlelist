@@ -89,3 +89,14 @@
 {
     font-size: 7px;
 }
+
+/*-- stats section dive/torpbomber special mods --*/
+.equip-box.dive .weapon-box,.equip-box.bomber .weapon-box
+{
+    width: 100%;
+}
+
+.equip-box.dive .plane-weapon,.equip-box.bomber .plane-weapon
+{
+    font-size: 10px;
+}

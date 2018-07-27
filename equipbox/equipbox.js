@@ -134,7 +134,22 @@ class EquipBox extends React.Component {
               upgradeableStats.dps,
               "/s"
             )
-          )
+          ),
+          (() => {
+            if (this.props.data.weapons) {
+              return React.createElement(
+                "div",
+                { className: "stat-box weapon-box" },
+                this.props.data.weapons.map((x, i) => {
+                  return React.createElement(
+                    "div",
+                    { className: "plane-weapon" },
+                    x
+                  );
+                })
+              );
+            }
+          })()
         )
       )
     );

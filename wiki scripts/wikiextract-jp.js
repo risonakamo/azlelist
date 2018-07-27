@@ -187,7 +187,16 @@ var planeOptions={
             noBurstDataCalc(data);
         }
 
-        data.weapons=data.weapon1.split("\n");
+        data.weapons=[];
+
+        if (data.weapon1!="-")
+        {
+            data.weapon1=data.weapon1.split("\n");
+            for (var x=0;x<data.weapon1.length;x++)
+            {
+                data.weapons.push(data.weapon1[x]);
+            }
+        }
 
         if (data.weapon2!="-")
         {

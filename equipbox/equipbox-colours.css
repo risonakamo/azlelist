@@ -28,21 +28,6 @@
     border-color: #f5b200;
 }
 
-.equip-box.dive
-{
-    color: #f16c6e;
-}
-
-.dive .img-hold
-{
-    background-color: #f16c6e;
-}
-
-.dive .info .divider
-{
-    border-color: #f16c6e;
-}
-
 .equip-box.dd-gun
 {
     color: #cf5b5d;
@@ -131,4 +116,19 @@
 .bomber .info .divider
 {
     border-color: #2780c2;
+}
+
+.equip-box.dive
+{
+    color: #f16c6e;
+}
+
+.dive .img-hold
+{
+    background-color: #f16c6e;
+}
+
+.dive .info .divider
+{
+    border-color: #f16c6e;
 }
