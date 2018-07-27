@@ -137,19 +137,61 @@ var aaOptions={
         }
     },
 
+    calculations:noBurstDataCalc
+};
+
+var planeOptions={
+    cols:{
+        0:"img",
+        1:"name",
+        3:"rarity",
+        4:"dmg",
+        5:"dmg10",
+        6:"reload",
+        7:"reload10",
+        10:"weapon1",
+        11:"weapon2"
+    },
+
+    modifiers:{
+        0:(element)=>{
+            if (element.firstChild)
+            {
+                return element.firstChild.src;
+            }
+
+            return null;
+        },
+
+        3:(element)=>{
+            return element.innerText.slice(1);
+        },
+
+        6:(element)=>{
+            return parseFloat(element.innerText);
+        },
+
+        7:(element)=>{
+            return parseFloat(element.innerText);
+        }
+    },
+
     calculations:(data)=>{
-        data.dmg=parseInt(data.dmg);
-        data.dps=Number((data.dmg/data.reload).toFixed(2));
+        noBurstDataCalc(data);
 
-        data.upgraded={
-            dmg:parseInt(data.dmg10),
-            reload:data.reload10
-        };
+        data.weapons=data.weapon1.split("\n");
 
-        data.upgraded.dps=Number((data.upgraded.dmg/data.reload10).toFixed(2));
+        if (data.weapon2!="-")
+        {
+            data.weapon2=data.weapon2.split("\n");
+            for (var x=0;x<data.weapon2.length;x++)
+            {
+                data.weapons.push(data.weapon2[x]);
+            }
+        }
 
-        delete data.dmg10;
-        delete data.reload10;
+        delete data.weapon1;
+        delete data.weapon2;
     }
 };
 
@@ -223,6 +265,23 @@ function standardDataCalc(data)
     data.upgraded.dps=Number((data.upgraded.burst/data.upgraded.reload).toFixed(2));
 
     //clean up
+    delete data.dmg10;
+    delete data.reload10;
+}
+
+//for use with aa gun and planes, where there is no BURST to calculate
+function noBurstDataCalc(data)
+{
+    data.dmg=parseInt(data.dmg);
+    data.dps=Number((data.dmg/data.reload).toFixed(2));
+
+    data.upgraded={
+        dmg:parseInt(data.dmg10),
+        reload:data.reload10
+    };
+
+    data.upgraded.dps=Number((data.upgraded.dmg/data.reload10).toFixed(2));
+
     delete data.dmg10;
     delete data.reload10;
 }
