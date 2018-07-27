@@ -1,0 +1,104 @@
+.equip-box.torp
+{
+    color: #3162ac;
+}
+
+.torp .img-hold
+{
+    background-color: #3162ac;
+}
+
+.torp .info .divider
+{
+    border-color: #3162ac;
+}
+
+.equip-box.cl-gun
+{
+    color: #f5b200;
+}
+
+.cl-gun .img-hold
+{
+    background-color: #f5b200;
+}
+
+.cl-gun .info .divider
+{
+    border-color: #f5b200;
+}
+
+.equip-box.fighter
+{
+    color: #48b063;
+}
+
+.fighter .img-hold
+{
+    background-color: #48b063;
+}
+
+.fighter .info .divider
+{
+    border-color: #48b063;
+}
+
+.equip-box.dive
+{
+    color: #f16c6e;
+}
+
+.dive .img-hold
+{
+    background-color: #f16c6e;
+}
+
+.dive .info .divider
+{
+    border-color: #f16c6e;
+}
+
+.equip-box.dd-gun
+{
+    color: #cf5b5d;
+}
+
+.dd-gun .img-hold
+{
+    background-color: #cf5b5d;
+}
+
+.dd-gun .info .divider
+{
+    border-color: #cf5b5d;
+}
+
+.equip-box.ca-gun
+{
+    color: #c93e41;
+}
+
+.ca-gun .img-hold
+{
+    background-color: #c93e41;
+}
+
+.ca-gun .info .divider
+{
+    border-color: #c93e41;
+}
+
+.equip-box.bb-gun
+{
+    color: #bf252a;
+}
+
+.bb-gun .img-hold
+{
+    background-color: #bf252a;
+}
+
+.bb-gun .info .divider
+{
+    border-color: #bf252a;
+}

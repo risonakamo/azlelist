@@ -3,7 +3,7 @@
 {
     display: inline-block;
     margin: 20px;
-    color: #3162ac;
+    color: black;
     text-align: center;
 }
 
@@ -13,7 +13,6 @@
     display: inline-block;
     width: 150px;
     height: 150px;
-    background-color: #3162ac;
     border-radius: 50%;
 }
 
@@ -57,7 +56,7 @@
 {
     display: inline-block;
     width: 55%;
-    border-bottom: 3px dashed #3162ac;
+    border-bottom: 3px dashed;
 }
 
 .stats
@@ -71,7 +70,8 @@
 {
     display: inline-block;
     width: 80px;
-    height: 40px;
+    min-height: 40px;
+    vertical-align: top;
 }
 
 .stat-box .label
@@ -83,4 +83,9 @@
 .stat-box .stat
 {
     font-size: 18px;
+}
+
+.stat-box .plane-weapon
+{
+    font-size: 7px;
 }
