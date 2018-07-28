@@ -1,0 +1,29 @@
+# to create EquipBox element
+type equipData
+{
+    img: string,
+    name: string,
+    rarity: string/int,
+
+    #main stats
+    dmg: int,
+    reload: float,
+    [burst]: int, #only if calculatable
+    dps: float,
+
+    #situational stats
+    [angle]: string, #only on torpedoes
+    [mag]: int, #only on torpedoes
+    [shot]: int, #only if applicable
+    [type]: int, #for guns
+
+    #upgraded stats
+    upgraded: {
+        dmg: int,
+        reload: float,
+        [burst]: int,
+        dps: float
+    },
+
+    [weapons]: [string] #for planes
+}
