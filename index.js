@@ -2,8 +2,8 @@ window.onload=main;
 
 function main()
 {
-    dataLoad("wikidata/bbgun.json",(data)=>{
-        ReactDOM.render(React.createElement(EquipBoxControl,{data,equipType:"bb-gun"}),document.querySelector(".equip-boxes"));
+    dataLoad("wikidata/torp.json",(data)=>{
+        ReactDOM.render(React.createElement(EquipBoxControl,{data,equipType:"torp"}),document.querySelector(".equip-boxes"));
     });
 }
 

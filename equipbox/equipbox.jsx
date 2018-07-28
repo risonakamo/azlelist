@@ -3,9 +3,66 @@
 //equipType: the string class of equips of the data received
 class EquipBoxControl extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.sortByStat=this.sortByStat.bind(this);
+
+    this.state={
+      data:this.props.data,
+      descend:1
+    };
+  }
+
+  componentDidMount()
+  {
+    this.sortByStat("dps");
+  }
+
+  //sort the data array. give it the stat string to sort, and
+  //a 1 for upgraded to sort by upgraded stat.
+  sortByStat(stat,upgraded=0)
+  {
+    this.state.data.sort((a,b)=>{
+      if (!upgraded)
+      {
+        if (a[stat]>b[stat])
+        {
+          return 1;
+        }
+
+        else if (a[stat]<b[stat])
+        {
+          return -1;
+        }
+
+        return 0;
+      }
+
+      if (a.upgraded[stat]>b.upgraded[stat])
+      {
+        return 1;
+      }
+
+      else if (a.upgraded[stat]<b.upgraded[stat])
+      {
+        return -1;
+      }
+
+      return 0;
+    });
+
+    if (this.state.descend)
+    {
+      this.state.data.reverse();
+    }
+
+    this.setState({data:this.state.data});
+  }
+
   render()
   {
-    return this.props.data.map((x,i)=>{
+    return this.state.data.map((x,i)=>{
       return <EquipBox data={x} key={i} equipType={this.props.equipType}/>;
     });
   }
