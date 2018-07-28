@@ -65,7 +65,26 @@ class EquipBox extends React.Component
             <img src={this.props.data.img}/>
           </div>
 
-          <div className="bot-imgs"></div>
+          <div className="bot-imgs">
+            {(()=>{
+              if (this.props.data.mag)
+              {
+                return <img className="icon" src="icons/mag.png" title="Magnetic Torpedo"/>;
+              }
+
+              switch (this.props.data.type)
+              {
+                case 1:
+                return <img className="icon" src="icons/ap.png" title="Armour Penetrating"/>;
+
+                case 2:
+                return <img className="icon" src="icons/he.png" title="High Explosive"/>;
+
+                case 3:
+                return <img className="icon" src="icons/sanshiki.png" title="Sanshiki Round"/>;
+              }
+            })()}
+          </div>
         </div>
 
         <div className="info">

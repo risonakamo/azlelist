@@ -58,7 +58,26 @@ class EquipBox extends React.Component {
           { className: "top-img" },
           React.createElement("img", { src: this.props.data.img })
         ),
-        React.createElement("div", { className: "bot-imgs" })
+        React.createElement(
+          "div",
+          { className: "bot-imgs" },
+          (() => {
+            if (this.props.data.mag) {
+              return React.createElement("img", { className: "icon", src: "icons/mag.png", title: "Magnetic Torpedo" });
+            }
+
+            switch (this.props.data.type) {
+              case 1:
+                return React.createElement("img", { className: "icon", src: "icons/ap.png", title: "Armour Penetrating" });
+
+              case 2:
+                return React.createElement("img", { className: "icon", src: "icons/he.png", title: "High Explosive" });
+
+              case 3:
+                return React.createElement("img", { className: "icon", src: "icons/sanshiki.png", title: "Sanshiki Round" });
+            }
+          })()
+        )
       ),
       React.createElement(
         "div",
