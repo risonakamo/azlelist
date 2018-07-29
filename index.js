@@ -18,7 +18,7 @@ function main()
 
             if (processed==dataFiles.length)
             {
-                console.log(allData);
+                ReactDOM.render(React.createElement(AzleListControl,{allData}),document.querySelector(".equip-boxes"))
             }
         });
     });
