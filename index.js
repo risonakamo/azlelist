@@ -2,11 +2,30 @@ window.onload=main;
 
 function main()
 {
-    dataLoad("wikidata/torp.json",(data)=>{
-        ReactDOM.render(React.createElement(EquipBoxControl,{data,equipType:"torp"}),document.querySelector(".equip-boxes"));
+    var dataFiles=["ddgun","clgun","cagun","bbgun",
+        "torp","aagun","fighter","dive","bomber"];
+
+    var dataClassNames=["dd-gun","cl-gun","ca-gun","bb-gun",
+        "torp","aa-gun","fighter","dive","bomber"];
+
+    var allData={};
+    var processed=0;
+
+    dataFiles.forEach((x,i)=>{
+        dataLoad(`wikidata/${x}.json`,(data)=>{
+            processed++;
+            allData[dataClassNames[i]]=data;
+
+            if (processed==dataFiles.length)
+            {
+                console.log(allData);
+            }
+        });
     });
 }
 
+//filename to load
+//callback(object data): recieves parsed data
 function dataLoad(filename,callback)
 {
     var r=new XMLHttpRequest();
