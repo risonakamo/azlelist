@@ -7,9 +7,44 @@
     font-weight: 400;
 }
 
+html
+{
+    height: 100%;
+}
+
 body
 {
+    height: 100%;
     margin: 0;
     font-size: 0;
     font-family: "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","notojp";
+}
+
+.top
+{
+    display: flex;
+    height: 100%;
+}
+
+.left-content
+{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.class-menu
+{
+    height: 50px;
+}
+
+.control-menu
+{
+    width: 70px;
+}
+
+.equipbox-top
+{
+    flex: 1;
+    overflow: auto;
 }
