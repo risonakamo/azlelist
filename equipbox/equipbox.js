@@ -1,6 +1,7 @@
-//EquipBoxControl(object-array data,string equipType)
+//EquipBoxControl(object-array data,string equipType,bool enabled)
 //data: an array of equip data objects
 //equipType: the string class of equips of the data received
+//enabled: if this equipboxcontrol should be displayed
 class EquipBoxControl extends React.Component {
   constructor(props) {
     super(props);
@@ -47,9 +48,18 @@ class EquipBoxControl extends React.Component {
   }
 
   render() {
-    return this.state.data.map((x, i) => {
-      return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType });
-    });
+    var enabled = "";
+    if (!this.props.enabled) {
+      enabled = "hidden";
+    }
+
+    return React.createElement(
+      "div",
+      { className: `equip-boxes ${enabled}` },
+      this.state.data.map((x, i) => {
+        return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType });
+      })
+    );
   }
 }
 
@@ -206,7 +216,7 @@ class EquipBox extends React.Component {
                 this.props.data.weapons.map((x, i) => {
                   return React.createElement(
                     "div",
-                    { className: "plane-weapon" },
+                    { className: "plane-weapon", key: i },
                     x
                   );
                 })

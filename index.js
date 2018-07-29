@@ -18,7 +18,7 @@ function main()
 
             if (processed==dataFiles.length)
             {
-                ReactDOM.render(React.createElement(AzleListControl,{allData}),document.querySelector(".equip-boxes"))
+                ReactDOM.render(React.createElement(AzleListControl,{allData,dataClassNames}),document.querySelector(".equipbox-top"))
             }
         });
     });
