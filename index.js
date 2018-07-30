@@ -5,20 +5,17 @@ function main()
     var dataFiles=["ddgun","clgun","cagun","bbgun",
         "torp","aagun","fighter","dive","bomber"];
 
-    var dataClassNames=["dd-gun","cl-gun","ca-gun","bb-gun",
-        "torp","aa-gun","fighter","dive","bomber"];
-
     var allData={};
     var processed=0;
 
     dataFiles.forEach((x,i)=>{
         dataLoad(`wikidata/${x}.json`,(data)=>{
             processed++;
-            allData[dataClassNames[i]]=data;
+            allData[x]=data;
 
             if (processed==dataFiles.length)
             {
-                ReactDOM.render(React.createElement(AzleListControl,{allData,dataClassNames}),document.querySelector(".equipbox-top"))
+                ReactDOM.render(React.createElement(AzleListControl,{allData,dataClassNames:dataFiles}),document.querySelector(".equipbox-top"))
             }
         });
     });

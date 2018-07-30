@@ -102,17 +102,17 @@ body
 }
 
 /*--temporary colour css --*/
-.top.dd-gun .control-menu,.top.dd-gun .side-triangle
+.top.ddgun .control-menu,.top.ddgun .side-triangle
 {
     background-color: #cf5b5d;
 }
 
-.class-button.dd-gun div
+.class-button.ddgun div
 {
     color: #cf5b5d;
 }
 
-.current-class.dd-gun .float-border
+.current-class.ddgun .float-border
 {
     border-color: #cf5b5d;
 }
