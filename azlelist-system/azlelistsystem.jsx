@@ -4,6 +4,22 @@
 //classNamesJp: exactly what is sounds like
 class AzleListControl extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.changeCurrentClass=this.changeCurrentClass.bind(this);
+
+        this.state={
+            currentClass:0 //index of the current class relative to the dataClassNames object
+        };
+    }
+
+    //give it the INDEX of the new class to set the current class to
+    changeCurrentClass(newclass)
+    {
+        this.setState({currentClass:newclass});
+    }
+
     render()
     {
         var equipBoxes=[];
@@ -13,7 +29,7 @@ class AzleListControl extends React.Component
         {
             currentClass=this.props.dataClassNames[x];
 
-            if (x==0)
+            if (x==this.state.currentClass)
             {
                 enabled=1;
             }
@@ -31,7 +47,8 @@ class AzleListControl extends React.Component
             equipBoxes,
 
             ReactDOM.createPortal(<EquipClassMenu equipClassNames={this.props.dataClassNames}
-                classNamesJp={this.props.classNamesJp}/>,document.querySelector(".class-menu"))
+                classNamesJp={this.props.classNamesJp} parentChangeClass={this.changeCurrentClass}/>,
+                document.querySelector(".class-menu"))
         ];
     }
 }

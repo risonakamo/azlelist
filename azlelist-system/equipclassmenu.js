@@ -1,6 +1,7 @@
-//EquipClassMenu(array equipClassNames,array classNamesJp)
+//EquipClassMenu(array equipClassNames,array classNamesJp,function parentChangeClass)
 //equipClassNames: array of equip classes
 //classNamesJp: jp string of equip class names
+//parentChangeClass(int newClass): function from parent that changes the current equipment class
 class EquipClassMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -11,9 +12,10 @@ class EquipClassMenu extends React.Component {
     };
   }
 
+  //give it an index newClass to set the new current class
   changeCurrentClass(newClass) {
-    console.log(newClass);
     this.setState({ currentClass: newClass });
+    this.props.parentChangeClass(newClass);
   }
 
   render() {
@@ -49,7 +51,9 @@ class EquipButton extends React.Component {
       {
         className: `class-button ${this.props.name}`,
         onClick: () => {
-          this.props.changeCurrentClass(this.props.index);
+          if (this.props.changeCurrentClass) {
+            this.props.changeCurrentClass(this.props.index);
+          }
         }
       },
       React.createElement("img", { src: `icons/${this.props.name}.png` }),
