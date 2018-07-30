@@ -1,6 +1,7 @@
-//AzleListControl(object allData)
+//AzleListControl(object allData,array dataClassNames,array classNamesJp)
 //allData: object of all data from data get
 //dataClassNames: array of equipment class names in desired order
+//classNamesJp: exactly what is sounds like
 class AzleListControl extends React.Component {
     render() {
         var equipBoxes = [];
@@ -19,6 +20,7 @@ class AzleListControl extends React.Component {
                 equipType: currentClass, key: x, enabled: enabled }));
         }
 
-        return [equipBoxes, ReactDOM.createPortal(React.createElement(EquipClassMenu, null), document.querySelector(".class-menu"))];
+        return [equipBoxes, ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
+            classNamesJp: this.props.classNamesJp }), document.querySelector(".class-menu"))];
     }
 }

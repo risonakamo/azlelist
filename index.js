@@ -5,6 +5,9 @@ function main()
     var dataFiles=["ddgun","clgun","cagun","bbgun",
         "torp","aagun","fighter","dive","bomber"];
 
+    var classNamesJp=["駆逐艦主砲","軽巡主砲","重巡主砲","戦艦主砲",
+        "魚雷","対空砲","戦闘機","爆撃機","攻撃機"];
+
     var allData={};
     var processed=0;
 
@@ -15,7 +18,8 @@ function main()
 
             if (processed==dataFiles.length)
             {
-                ReactDOM.render(React.createElement(AzleListControl,{allData,dataClassNames:dataFiles}),document.querySelector(".equipbox-top"))
+                ReactDOM.render(React.createElement(AzleListControl,{allData,dataClassNames:dataFiles,classNamesJp}),
+                    document.querySelector(".equipbox-top"));
             }
         });
     });
