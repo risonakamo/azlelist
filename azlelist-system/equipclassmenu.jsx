@@ -28,7 +28,16 @@ class EquipClassMenu extends React.Component
   render()
   {
     return [
-      <div className="class-holder" key="eqmtop1">
+      <div className="current-class" key="eqmtop1">
+        <div className="side-triangle"></div>
+
+        <EquipButton name={this.props.equipClassNames[this.state.currentClass]}
+          nameJp={this.props.classNamesJp[this.state.currentClass]}/>
+
+        <div className="float-border"></div>
+      </div>,
+
+      <div className="class-holder" key="eqmtop2">
         {this.props.equipClassNames.map((x,i)=>{
           if (i==this.state.currentClass)
           {
@@ -38,15 +47,6 @@ class EquipClassMenu extends React.Component
           return <EquipButton name={x} nameJp={this.props.classNamesJp[i]}
             key={i} index={i} changeCurrentClass={this.changeCurrentClass}/>;
         })}
-      </div>,
-
-      <div className="current-class" key="eqmtop2">
-        <div className="float-border"></div>
-
-        <EquipButton name={this.props.equipClassNames[this.state.currentClass]}
-          nameJp={this.props.classNamesJp[this.state.currentClass]}/>
-
-        <div className="side-triangle"></div>
       </div>
     ];
   }

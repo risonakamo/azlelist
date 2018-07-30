@@ -25,7 +25,14 @@ class EquipClassMenu extends React.Component {
   render() {
     return [React.createElement(
       "div",
-      { className: "class-holder", key: "eqmtop1" },
+      { className: "current-class", key: "eqmtop1" },
+      React.createElement("div", { className: "side-triangle" }),
+      React.createElement(EquipButton, { name: this.props.equipClassNames[this.state.currentClass],
+        nameJp: this.props.classNamesJp[this.state.currentClass] }),
+      React.createElement("div", { className: "float-border" })
+    ), React.createElement(
+      "div",
+      { className: "class-holder", key: "eqmtop2" },
       this.props.equipClassNames.map((x, i) => {
         if (i == this.state.currentClass) {
           return null;
@@ -34,13 +41,6 @@ class EquipClassMenu extends React.Component {
         return React.createElement(EquipButton, { name: x, nameJp: this.props.classNamesJp[i],
           key: i, index: i, changeCurrentClass: this.changeCurrentClass });
       })
-    ), React.createElement(
-      "div",
-      { className: "current-class", key: "eqmtop2" },
-      React.createElement("div", { className: "float-border" }),
-      React.createElement(EquipButton, { name: this.props.equipClassNames[this.state.currentClass],
-        nameJp: this.props.classNamesJp[this.state.currentClass] }),
-      React.createElement("div", { className: "side-triangle" })
     )];
   }
 }

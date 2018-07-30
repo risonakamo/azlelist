@@ -49,8 +49,7 @@ body
 {
     display: flex;
     min-height: 50px;
-    justify-content: flex-end;
-    text-align: right;
+    justify-content: flex-start;
     user-select: none;
 }
 
@@ -58,13 +57,13 @@ body
 {
     height: 50px;
     width: 7px;
-    clip-path: polygon(0% 50%,100% 35%,100% 65%);
-    margin-left: 6px;
+    clip-path: polygon(100% 50%,0% 35%,0% 65%);
 }
 
 .class-holder
 {
     flex: 1;
+    padding-top: 3px;
 }
 
 .current-class
@@ -72,13 +71,14 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 6px;
+    margin-right: 6px;
 }
 
 .float-border
 {
     height: 70%;
     border-left: 1px solid;
+    margin-left: 5px;
 }
 
 /*-- class button --*/
