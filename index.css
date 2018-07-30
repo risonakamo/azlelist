@@ -51,7 +51,6 @@ body
     min-height: 50px;
     justify-content: flex-end;
     text-align: right;
-    background-color: dodgerblue;
 }
 
 .class-menu .side-triangle
@@ -59,6 +58,7 @@ body
     height: 50px;
     width: 7px;
     clip-path: polygon(0% 50%,100% 35%,100% 65%);
+    margin-left: 6px;
 }
 
 .class-holder
@@ -71,6 +71,13 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 6px;
+}
+
+.float-border
+{
+    height: 70%;
+    border-left: 1px solid;
 }
 
 /*-- class button --*/
@@ -102,4 +109,9 @@ body
 .class-button.dd-gun div
 {
     color: #cf5b5d;
+}
+
+.current-class.dd-gun .float-border
+{
+    border-color: #cf5b5d;
 }
