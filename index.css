@@ -101,19 +101,3 @@ body
     font-size: 26px;
     padding-top: 5px;
 }
-
-/*--temporary colour css --*/
-.top.ddgun .control-menu,.top.ddgun .side-triangle
-{
-    background-color: #cf5b5d;
-}
-
-.class-button.ddgun div
-{
-    color: #cf5b5d;
-}
-
-.top.ddgun .float-border
-{
-    border-color: #cf5b5d;
-}
