@@ -33,11 +33,6 @@ body
     flex: 1;
 }
 
-.class-menu
-{
-    height: 50px;
-}
-
 .control-menu
 {
     width: 70px;
@@ -47,4 +42,58 @@ body
 {
     flex: 1;
     overflow: auto;
+}
+
+/*-- class menu --*/
+.class-menu
+{
+    height: 50px;
+    text-align: right;
+    background-color: dodgerblue;
+}
+
+.class-menu>div
+{
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+
+.side-triangle
+{
+    height: 100%;
+    width: 7px;
+    clip-path: polygon(0% 50%,100% 35%,100% 65%);
+}
+
+/*-- class button --*/
+.class-button
+{
+    display: inline-block;
+    height: 100%;
+    margin: 0 2px 0 2px;
+}
+
+.class-button img
+{
+    padding-top: 9px;
+}
+
+.class-button div
+{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 26px;
+    padding-top: 5px;
+}
+
+/*--temporary colour css --*/
+.top.dd-gun .control-menu,.top.dd-gun .side-triangle
+{
+    background-color: #cf5b5d;
+}
+
+.class-button.dd-gun div
+{
+    color: #cf5b5d;
 }
