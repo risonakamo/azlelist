@@ -26,6 +26,10 @@ class AzleListControl extends React.Component
                 equipType={currentClass} key={x} enabled={enabled}/>);
         }
 
-        return equipBoxes;
+        return [
+            equipBoxes,
+
+            ReactDOM.createPortal(<EquipClassMenu/>,document.querySelector(".class-menu"))
+        ];
     }
 }
