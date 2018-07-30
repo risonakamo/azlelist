@@ -51,6 +51,7 @@ body
     min-height: 50px;
     justify-content: flex-end;
     text-align: right;
+    user-select: none;
 }
 
 .class-menu .side-triangle
@@ -112,7 +113,7 @@ body
     color: #cf5b5d;
 }
 
-.current-class.ddgun .float-border
+.top.ddgun .float-border
 {
     border-color: #cf5b5d;
 }

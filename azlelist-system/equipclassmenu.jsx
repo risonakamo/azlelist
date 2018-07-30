@@ -12,11 +12,15 @@ class EquipClassMenu extends React.Component
     this.state={
       currentClass:0 //the index of the current class
     };
+
+    this.topElement=document.querySelector(".top");
   }
 
   //give it an index newClass to set the new current class
   changeCurrentClass(newClass)
   {
+    this.topElement.classList.remove(this.props.equipClassNames[this.state.currentClass]);
+    this.topElement.classList.add(this.props.equipClassNames[newClass]);
     this.setState({currentClass:newClass});
     this.props.parentChangeClass(newClass);
   }
