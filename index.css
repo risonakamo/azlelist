@@ -128,7 +128,7 @@ body
     cursor: pointer;
 }
 
-.sort-button:hover
+.sort-button:hover,.mark-button:hover
 {
     background-color: rgba(255,255,255,.23);
 }
@@ -167,6 +167,13 @@ body
     border-width: 1px 1px 0 1px;
     border-color: white;
     border-style: solid;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+
+.mark-button.selected
+{
+    background-color: white;
 }
 
 .mark-buttons .mark-button:first-of-type
@@ -181,7 +188,7 @@ body
 }
 
 /*-- temp colours --*/
-.top.ddgun .sort-button.selected
+.top.ddgun .sort-button.selected,.top.ddgun .mark-button.selected
 {
     color: #cf5b5d;
 }
