@@ -42,6 +42,7 @@ class SortControlMenu extends React.Component
           <div className="label-line"></div>
         </div>
 
+        {/*sort buttons*/}
         {["DPS","BURST","DMG","RARE","RELOAD","SHOT"].map((x,i)=>{
           var selected="";
           if (i==this.state.selectedSort)
@@ -69,6 +70,7 @@ class SortControlMenu extends React.Component
           <div className="label-line"></div>
         </div>
 
+        {/*upgrade buttons*/}
         <div className="upgrade-buttons">
           {["+0","+10"].map((x,i)=>{
             var selected="";
@@ -99,9 +101,9 @@ class SortControlMenu extends React.Component
         </div>
 
         <div className="mark-buttons">
-          <div className="mark-button selected">SET</div>
-          <div className="mark-button">SHOW</div>
-          <div className="mark-button">CLEAR</div>
+          {["SET","SHOW","CLEAR"].map((x,i)=>{
+            return <div className="mark-button" key={i}>{x}</div>;
+          })}
         </div>
       </div>
     );

@@ -96,7 +96,7 @@ class SortControlMenu extends React.Component {
         { className: "mark-buttons" },
         React.createElement(
           "div",
-          { className: "mark-button selected" },
+          { className: "mark-button" },
           "SET"
         ),
         React.createElement(
