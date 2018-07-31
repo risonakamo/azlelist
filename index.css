@@ -101,3 +101,28 @@ body
     font-size: 26px;
     padding-top: 5px;
 }
+
+/*-- control menu --*/
+.control-menu>div
+{
+    font-size: 13px;
+    color: white;
+    text-align: center;
+}
+
+.control-menu .label-line
+{
+    width: 60%;
+    border-top: 1px solid white;
+    margin: auto;
+}
+
+.sort-button,.control-menu .label
+{
+    padding: 5px 0 5px 0;
+}
+
+.spacer
+{
+    padding-top: 8px;
+}
