@@ -124,8 +124,9 @@ body
 
 .sort-button
 {
-    transition: background-color .2s;
+    transition: background-color .2s,padding .2s;
     cursor: pointer;
+    user-select: none;
 }
 
 .sort-button:hover,.mark-button:hover
@@ -145,7 +146,7 @@ body
     padding-left: 3px;
 }
 
-.control-menu.desc .sort-button.selected::after
+.controlmenu-wrap.desc .sort-button.selected::after
 {
     content: "↓";
 }

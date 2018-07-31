@@ -35,6 +35,6 @@ class AzleListControl extends React.Component {
         }
 
         return [equipBoxes, ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
-            classNamesJp: this.props.classNamesJp, parentChangeClass: this.changeCurrentClass }), document.querySelector(".class-menu"))];
+            classNamesJp: this.props.classNamesJp, parentChangeClass: this.changeCurrentClass }), document.querySelector(".class-menu")), ReactDOM.createPortal(React.createElement(SortControlMenu, null), document.querySelector(".control-menu"))];
     }
 }
