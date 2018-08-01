@@ -170,6 +170,7 @@ body
     border-style: solid;
     transition: background-color .2s;
     cursor: pointer;
+    user-select: none;
 }
 
 .mark-button.selected
