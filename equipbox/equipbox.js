@@ -1,52 +1,9 @@
-//EquipBoxControl(object-array data,string equipType,bool enabled)
+//EquipBoxControl(object-array data,string equipType,bool enabled,bool upgraded)
 //data: an array of equip data objects
 //equipType: the string class of equips of the data received
 //enabled: if this equipboxcontrol should be displayed
+//upgraded: if 1 equipboxes will be upgraded
 class EquipBoxControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.sortByStat = this.sortByStat.bind(this);
-
-    this.state = {
-      data: this.props.data,
-      descend: 1
-    };
-  }
-
-  componentDidMount() {
-    this.sortByStat("dps");
-  }
-
-  //sort the data array. give it the stat string to sort, and
-  //a 1 for upgraded to sort by upgraded stat.
-  sortByStat(stat, upgraded = 0) {
-    this.state.data.sort((a, b) => {
-      if (!upgraded) {
-        if (a[stat] > b[stat]) {
-          return 1;
-        } else if (a[stat] < b[stat]) {
-          return -1;
-        }
-
-        return 0;
-      }
-
-      if (a.upgraded[stat] > b.upgraded[stat]) {
-        return 1;
-      } else if (a.upgraded[stat] < b.upgraded[stat]) {
-        return -1;
-      }
-
-      return 0;
-    });
-
-    if (this.state.descend) {
-      this.state.data.reverse();
-    }
-
-    this.setState({ data: this.state.data });
-  }
-
   render() {
     var enabled = "";
     if (!this.props.enabled) {
@@ -56,8 +13,8 @@ class EquipBoxControl extends React.Component {
     return React.createElement(
       "div",
       { className: `equip-boxes ${enabled}` },
-      this.state.data.map((x, i) => {
-        return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType });
+      this.props.data.map((x, i) => {
+        return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType, upgraded: this.props.upgraded });
       })
     );
   }
