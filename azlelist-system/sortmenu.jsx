@@ -1,10 +1,14 @@
-//SortControlMenu()
+//SortControlMenu(function sortStat)
+//sortStat(int stat,int direction,int upgraded): function from parent to
+//call with data from this object
 class SortControlMenu extends React.Component
 {
   constructor(props)
   {
     super(props);
     this.changeSort=this.changeSort.bind(this);
+    this.changeUpgrade=this.changeUpgrade.bind(this);
+    this.sendSortData=this.sendSortData.bind(this);
 
     this.state={
       sortDirection:1, //ascending or descending sort
@@ -19,16 +23,22 @@ class SortControlMenu extends React.Component
   {
     if (this.state.selectedSort==newSort)
     {
-      this.setState({sortDirection:this.state.sortDirection?0:1});
+      this.setState({sortDirection:this.state.sortDirection?0:1},this.sendSortData);
       return;
     }
 
-    this.setState({selectedSort:newSort});
+    this.setState({selectedSort:newSort},this.sendSortData);
   }
 
   changeUpgrade(newUpgrade)
   {
-    this.setState({selectedUpgrade:newUpgrade});
+    this.setState({selectedUpgrade:newUpgrade},this.sendSortData);
+  }
+
+  //trigger sort render update in parent
+  sendSortData()
+  {
+    this.props.sortStat(this.state.selectedSort,this.state.sortDirection,this.state.selectedUpgrade);
   }
 
   render()

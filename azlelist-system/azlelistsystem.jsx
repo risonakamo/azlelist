@@ -46,7 +46,7 @@ class AzleListControl extends React.Component
         stat=this.sortNames[stat];
 
         data.sort((a,b)=>{
-            if (!upgraded)
+            if (!upgraded || !a.upgraded[stat])
             {
                 if (a[stat]>b[stat])
                 {
@@ -79,7 +79,7 @@ class AzleListControl extends React.Component
             data.reverse();
         }
 
-        this.setState({allData:data,upgraded});
+        this.setState({allData:this.state.allData,upgraded});
     }
 
     render()
@@ -112,7 +112,7 @@ class AzleListControl extends React.Component
                 classNamesJp={this.props.classNamesJp} parentChangeClass={this.changeCurrentClass}/>,
                 document.querySelector(".class-menu")),
 
-            ReactDOM.createPortal(<SortControlMenu/>,document.querySelector(".control-menu"))
+            ReactDOM.createPortal(<SortControlMenu sortStat={this.sortByStat}/>,document.querySelector(".control-menu"))
         ];
     }
 }
