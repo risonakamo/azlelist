@@ -1,4 +1,4 @@
-.equip-box.torp,.class-button.torp div
+.equip-box.torp,.class-button.torp div,.top.torp .sort-button.selected,.top.torp .mark-button.selected
 {
     color: #3162ac;
 }
@@ -13,7 +13,7 @@
     border-color: #3162ac;
 }
 
-.equip-box.clgun,.class-button.clgun div
+.equip-box.clgun,.class-button.clgun div,.top.clgun .sort-button.selected,.top.clgun .mark-button.selected
 {
     color: #f5b200;
 }
@@ -28,7 +28,7 @@
     border-color: #f5b200;
 }
 
-.equip-box.ddgun,.class-button.ddgun div
+.equip-box.ddgun,.class-button.ddgun div,.top.ddgun .sort-button.selected,.top.ddgun .mark-button.selected
 {
     color: #cf5b5d;
 }
@@ -43,7 +43,7 @@
     border-color: #cf5b5d;
 }
 
-.equip-box.cagun,.class-button.cagun div
+.equip-box.cagun,.class-button.cagun div,.top.cagun .sort-button.selected,.top.cagun .mark-button.selected
 {
     color: #c93e41;
 }
@@ -58,7 +58,7 @@
     border-color: #c93e41;
 }
 
-.equip-box.bbgun,.class-button.bbgun div
+.equip-box.bbgun,.class-button.bbgun div,.top.bbgun .sort-button.selected,.top.bbgun .mark-button.selected
 {
     color: #bf252a;
 }
@@ -73,7 +73,7 @@
     border-color: #bf252a;
 }
 
-.equip-box.aagun,.class-button.aagun div
+.equip-box.aagun,.class-button.aagun div,.top.aagun .sort-button.selected,.top.aagun .mark-button.selected
 {
     color: #39c654;
 }
@@ -88,7 +88,7 @@
     border-color: #39c654;
 }
 
-.equip-box.fighter,.class-button.fighter div
+.equip-box.fighter,.class-button.fighter div,.top.fighter .sort-button.selected,.top.fighter .mark-button.selected
 {
     color: #48b063;
 }
@@ -103,7 +103,7 @@
     border-color: #48b063;
 }
 
-.equip-box.bomber,.class-button.bomber div
+.equip-box.bomber,.class-button.bomber div,.top.bomber .sort-button.selected,.top.bomber .mark-button.selected
 {
     color: #2780c2;
 }
@@ -118,7 +118,7 @@
     border-color: #2780c2;
 }
 
-.equip-box.dive,.class-button.dive div
+.equip-box.dive,.class-button.dive div,.top.dive .sort-button.selected,.top.dive .mark-button.selected
 {
     color: #f16c6e;
 }
