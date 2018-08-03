@@ -1,44 +1,44 @@
-.top.torp
+.top.torp,.class-button.torp div
 {
     --main-colour: #3162ac;
 }
 
-.top.clgun
+.top.clgun,.class-button.clgun div
 {
     --main-colour: #f5b200;
 }
 
-.top.ddgun
+.top.ddgun,.class-button.ddgun div
 {
     --main-colour: #cf5b5d;
 }
 
-.top.cagun
+.top.cagun,.class-button.cagun div
 {
     --main-colour: #c93e41;
 }
 
-.top.bbgun
+.top.bbgun,.class-button.bbgun div
 {
     --main-colour: #bf252a;
 }
 
-.top.aagun
+.top.aagun,.class-button.aagun div
 {
     --main-colour: #39c654;
 }
 
-.top.fighter
+.top.fighter,.class-button.fighter div
 {
     --main-colour: #48b063;
 }
 
-.top.bomber
+.top.bomber,.class-button.bomber div
 {
     --main-colour: #2780c2;
 }
 
-.top.dive
+.top.dive,.class-button.dive div
 {
     --main-colour: #f16c6e;
 }
