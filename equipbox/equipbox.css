@@ -3,6 +3,16 @@
     display: none;
 }
 
+.equip-boxes.mark-mode .equip-box
+{
+    cursor: pointer;
+}
+
+.mark-mode .equip-box:hover .img-hold
+{
+    box-shadow: inset 0px 0px 0px 1px var(--main-colour), inset 0px 0px 0px 4px white;
+}
+
 /*-- equip box --*/
 .equip-box
 {
@@ -20,6 +30,7 @@
     height: 150px;
     border-radius: 50%;
     background-color: var(--main-colour);
+    transition: box-shadow .15s;
 }
 
 .equip-box .img-hold>div
@@ -107,7 +118,7 @@
     font-size: 10px;
 }
 
-.equip-box.marked .img-hold
+.equip-boxes .equip-box.marked .img-hold
 {
     box-shadow: inset 0px 0px 0px 1px var(--main-colour), inset 0px 0px 0px 7px white;
 }

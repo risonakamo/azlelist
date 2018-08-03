@@ -1,6 +1,7 @@
-//SortControlMenu(function sortStat)
+//SortControlMenu(function sortStat,function toggleMarkMode)
 //sortStat(int stat,int direction,int upgraded): function from parent to
 //call with data from this object
+//toggleMarkMode(): parent function to activate markmode
 class SortControlMenu extends React.Component
 {
   constructor(props)
@@ -9,6 +10,7 @@ class SortControlMenu extends React.Component
     this.changeSort=this.changeSort.bind(this);
     this.changeUpgrade=this.changeUpgrade.bind(this);
     this.sendSortData=this.sendSortData.bind(this);
+    this.setMarkEvent=this.setMarkEvent.bind(this);
 
     this.state={
       sortDirection:1, //ascending or descending sort
@@ -19,6 +21,7 @@ class SortControlMenu extends React.Component
     this.sortDirections=["","desc"];
   }
 
+  //switch the current sort to one specfied by index, propogates up
   changeSort(newSort)
   {
     if (this.state.selectedSort==newSort)
@@ -30,6 +33,7 @@ class SortControlMenu extends React.Component
     this.setState({selectedSort:newSort},this.sendSortData);
   }
 
+  //switch current uprade mode, propgates up
   changeUpgrade(newUpgrade)
   {
     this.setState({selectedUpgrade:newUpgrade},this.sendSortData);
@@ -39,6 +43,12 @@ class SortControlMenu extends React.Component
   sendSortData()
   {
     this.props.sortStat(this.state.selectedSort,this.state.sortDirection,this.state.selectedUpgrade);
+  }
+
+  setMarkEvent(e)
+  {
+    e.currentTarget.classList.toggle("selected");
+    this.props.toggleMarkMode();
   }
 
   render()
@@ -111,8 +121,8 @@ class SortControlMenu extends React.Component
         </div>
 
         <div className="mark-buttons">
-          {["SET","SHOW","CLEAR"].map((x,i)=>{
-            return <div className="mark-button" key={i}>{x}</div>;
+          {[["SET",this.setMarkEvent],["SHOW",null],["CLEAR",null]].map((x,i)=>{
+            return <div className="mark-button" key={i} onClick={x[1]}>{x[0]}</div>;
           })}
         </div>
       </div>

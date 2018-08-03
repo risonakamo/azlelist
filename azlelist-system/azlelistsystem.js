@@ -7,11 +7,13 @@ class AzleListControl extends React.Component {
         super(props);
         this.changeCurrentClass = this.changeCurrentClass.bind(this);
         this.sortByStat = this.sortByStat.bind(this);
+        this.toggleMarkMode = this.toggleMarkMode.bind(this);
 
         this.state = {
             currentClass: 0, //index of the current class relative to the dataClassNames object
             allData: this.props.allData,
-            upgraded: 0
+            upgraded: 0,
+            markMode: 0
         };
 
         this.sortNames = ["dps", "burst", "dmg", "rarity", "reload", "shot"];
@@ -66,24 +68,32 @@ class AzleListControl extends React.Component {
         this.setState({ allData: this.state.allData, upgraded });
     }
 
+    //toggle the mark mode state
+    toggleMarkMode() {
+        this.setState({ markMode: this.state.markMode ? 0 : 1 });
+    }
+
     render() {
         var equipBoxes = [];
         var enabled;
         var currentClass;
+        var markMode;
         for (var x = 0, l = this.props.dataClassNames.length; x < l; x++) {
             currentClass = this.props.dataClassNames[x];
 
             if (x == this.state.currentClass) {
                 enabled = 1;
+                markMode = this.state.markMode;
             } else {
                 enabled = 0;
+                markMode = 0;
             }
 
             equipBoxes.push(React.createElement(EquipBoxControl, { data: this.props.allData[currentClass],
-                equipType: currentClass, key: x, enabled: enabled, upgraded: this.state.upgraded }));
+                equipType: currentClass, key: x, enabled: enabled, upgraded: this.state.upgraded, markMode: markMode }));
         }
 
         return [equipBoxes, ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
-            classNamesJp: this.props.classNamesJp, parentChangeClass: this.changeCurrentClass }), document.querySelector(".class-menu")), ReactDOM.createPortal(React.createElement(SortControlMenu, { sortStat: this.sortByStat }), document.querySelector(".control-menu"))];
+            classNamesJp: this.props.classNamesJp, parentChangeClass: this.changeCurrentClass }), document.querySelector(".class-menu")), ReactDOM.createPortal(React.createElement(SortControlMenu, { sortStat: this.sortByStat, toggleMarkMode: this.toggleMarkMode }), document.querySelector(".control-menu"))];
     }
 }
