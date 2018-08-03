@@ -1,8 +1,9 @@
-//EquipBoxControl(object-array data,string equipType,bool enabled,bool upgraded)
+//EquipBoxControl(object-array data,string equipType,bool enabled,bool upgraded,bool/int markMode)
 //data: an array of equip data objects
 //equipType: the string class of equips of the data received
 //enabled: if this equipboxcontrol should be displayed
 //upgraded: if 1 equipboxes will be upgraded
+//markMode: 1=enable mark mode
 class EquipBoxControl extends React.Component
 {
   render()
@@ -13,26 +14,39 @@ class EquipBoxControl extends React.Component
       enabled="hidden";
     }
 
+    var markMode="";
+    if (this.props.markMode)
+    {
+      markMode="mark-mode";
+    }
+
     return (
-      <div className={`equip-boxes ${enabled}`}>
+      <div className={`equip-boxes ${enabled} ${markMode}`}>
         {this.props.data.map((x,i)=>{
-          return <EquipBox data={x} key={i} equipType={this.props.equipType} upgraded={this.props.upgraded}/>;
+          return <EquipBox data={x} key={i} equipType={this.props.equipType}
+            upgraded={this.props.upgraded} markMode={this.props.markMode}/>;
         })}
       </div>
     );
   }
 }
 
-//EquipBox(object data,string equipType,bool upgraded)
+//EquipBox(object data,string equipType,bool upgraded,bool markMode)
 //data: a single equipdata object
 //equipType: class string of type of equipment
 //upgraded: 1 to use upgraded stats, 0 for normal
+//markMode: 1=to enable markmode where clicking marks the element
 class EquipBox extends React.Component
 {
   constructor(props)
   {
     super(props);
     this.getUpgraded=this.getUpgraded.bind(this);
+    this.toggleMark=this.toggleMark.bind(this);
+
+    this.state={
+      marked:false
+    };
   }
 
   getUpgraded(yes)
@@ -55,6 +69,14 @@ class EquipBox extends React.Component
     };
   }
 
+  toggleMark()
+  {
+    if (this.props.markMode)
+    {
+      this.setState({marked:!this.state.marked});
+    }
+  }
+
   render()
   {
     var upgradeableStats=this.getUpgraded(this.props.upgraded);
@@ -70,9 +92,15 @@ class EquipBox extends React.Component
       dmgText=`${upgradeableStats.dmg}x${this.props.data.shot}`;
     }
 
+    var markedState="";
+    if (this.state.marked)
+    {
+      markedState="marked";
+    }
+
     return (
-      <div className={`equip-box ${this.props.equipType}`}>
-        <div className="img-hold">
+      <div className={`equip-box ${this.props.equipType} ${markedState}`}>
+        <div className="img-hold" onClick={this.toggleMark}>
           <div className="top-img">
             <img src={this.props.data.img}/>
           </div>

@@ -14,20 +14,26 @@ class EquipBoxControl extends React.Component {
       "div",
       { className: `equip-boxes ${enabled}` },
       this.props.data.map((x, i) => {
-        return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType, upgraded: this.props.upgraded });
+        return React.createElement(EquipBox, { data: x, key: i, equipType: this.props.equipType, upgraded: this.props.upgraded, markMode: 1 });
       })
     );
   }
 }
 
-//EquipBox(object data,string equipType,bool upgraded)
+//EquipBox(object data,string equipType,bool upgraded,bool markMode)
 //data: a single equipdata object
 //equipType: class string of type of equipment
 //upgraded: 1 to use upgraded stats, 0 for normal
+//markMode: 1=to enable markmode where clicking marks the element
 class EquipBox extends React.Component {
   constructor(props) {
     super(props);
     this.getUpgraded = this.getUpgraded.bind(this);
+    this.toggleMark = this.toggleMark.bind(this);
+
+    this.state = {
+      marked: false
+    };
   }
 
   getUpgraded(yes) {
@@ -48,6 +54,12 @@ class EquipBox extends React.Component {
     };
   }
 
+  toggleMark() {
+    if (this.props.markMode) {
+      this.setState({ marked: !this.state.marked });
+    }
+  }
+
   render() {
     var upgradeableStats = this.getUpgraded(this.props.upgraded);
 
@@ -58,12 +70,17 @@ class EquipBox extends React.Component {
       dmgText = `${upgradeableStats.dmg}x${this.props.data.shot}`;
     }
 
+    var markedState = "";
+    if (this.state.marked) {
+      markedState = "marked";
+    }
+
     return React.createElement(
       "div",
-      { className: `equip-box ${this.props.equipType}` },
+      { className: `equip-box ${this.props.equipType} ${markedState}` },
       React.createElement(
         "div",
-        { className: "img-hold" },
+        { className: "img-hold", onClick: this.toggleMark },
         React.createElement(
           "div",
           { className: "top-img" },
