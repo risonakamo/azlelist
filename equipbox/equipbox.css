@@ -105,3 +105,8 @@
 {
     font-size: 10px;
 }
+
+.equip-box.marked .img-hold
+{
+    box-shadow: inset 0px 0px 0px 1px var(--main-colour), inset 0px 0px 0px 7px white;
+}

@@ -31,6 +31,7 @@
 .equip-box.ddgun,.class-button.ddgun div,.top.ddgun .sort-button.selected,.top.ddgun .mark-button.selected
 {
     color: #cf5b5d;
+    --main-colour: #cf5b5d;
 }
 
 .ddgun .img-hold,.top.ddgun .control-menu,.top.ddgun .side-triangle
