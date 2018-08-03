@@ -14,7 +14,7 @@ class AzleListControl extends React.Component {
             upgraded: 0
         };
 
-        this.sortNames = ["dps", "burst", "dmg", "rare", "reload", "shot"];
+        this.sortNames = ["dps", "burst", "dmg", "rarity", "reload", "shot"];
 
         //this.firstSort=0
     }
