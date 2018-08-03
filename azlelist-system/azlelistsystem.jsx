@@ -10,12 +10,14 @@ class AzleListControl extends React.Component
         this.changeCurrentClass=this.changeCurrentClass.bind(this);
         this.sortByStat=this.sortByStat.bind(this);
         this.toggleMarkMode=this.toggleMarkMode.bind(this);
+        this.toggleShowMarks=this.toggleShowMarks.bind(this);
 
         this.state={
             currentClass:0, //index of the current class relative to the dataClassNames object
             allData:this.props.allData,
             upgraded:0,
-            markMode:0
+            markMode:0,
+            showMark:0
         };
 
         this.sortNames=["dps","burst","dmg","rarity","reload","shot"];
@@ -90,12 +92,19 @@ class AzleListControl extends React.Component
         this.setState({markMode:this.state.markMode?0:1});
     }
 
+    //toggle show marked equips only
+    toggleShowMarks()
+    {
+        this.setState({showMark:this.state.showMark?0:1});
+    }
+
     render()
     {
         var equipBoxes=[];
         var enabled;
         var currentClass;
         var markMode;
+        var showMark;
         for (var x=0,l=this.props.dataClassNames.length;x<l;x++)
         {
             currentClass=this.props.dataClassNames[x];
@@ -104,16 +113,19 @@ class AzleListControl extends React.Component
             {
                 enabled=1;
                 markMode=this.state.markMode;
+                showMark=this.state.showMark;
             }
 
             else
             {
                 enabled=0;
                 markMode=0;
+                showMark=0;
             }
 
             equipBoxes.push(<EquipBoxControl data={this.props.allData[currentClass]}
-                equipType={currentClass} key={x} enabled={enabled} upgraded={this.state.upgraded} markMode={markMode}/>);
+                equipType={currentClass} key={x} enabled={enabled}
+                upgraded={this.state.upgraded} markMode={markMode} showMark={showMark}/>);
         }
 
         return [
@@ -124,7 +136,8 @@ class AzleListControl extends React.Component
                 document.querySelector(".class-menu")),
 
             ReactDOM.createPortal(<SortControlMenu sortStat={this.sortByStat}
-                toggleMarkMode={this.toggleMarkMode}/>,document.querySelector(".control-menu"))
+                toggleMarkMode={this.toggleMarkMode} showMarkMode={this.toggleShowMarks}
+                />,document.querySelector(".control-menu"))
         ];
     }
 }

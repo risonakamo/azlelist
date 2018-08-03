@@ -1,9 +1,10 @@
-//EquipBoxControl(object-array data,string equipType,bool enabled,bool upgraded,bool/int markMode)
+//EquipBoxControl(object-array data,string equipType,bool enabled,bool upgraded,bool/int markMode,bool/int showMark)
 //data: an array of equip data objects
 //equipType: the string class of equips of the data received
 //enabled: if this equipboxcontrol should be displayed
 //upgraded: if 1 equipboxes will be upgraded
 //markMode: 1=enable mark mode
+//showMark: 1=show only marked boxes
 class EquipBoxControl extends React.Component
 {
   render()
@@ -24,18 +25,19 @@ class EquipBoxControl extends React.Component
       <div className={`equip-boxes ${enabled} ${markMode}`}>
         {this.props.data.map((x,i)=>{
           return <EquipBox data={x} key={i} equipType={this.props.equipType}
-            upgraded={this.props.upgraded} markMode={this.props.markMode}/>;
+            upgraded={this.props.upgraded} markMode={this.props.markMode} showMark={this.props.showMark}/>;
         })}
       </div>
     );
   }
 }
 
-//EquipBox(object data,string equipType,bool upgraded,bool markMode)
+//EquipBox(object data,string equipType,bool upgraded,bool markMode,bool/int showMark)
 //data: a single equipdata object
 //equipType: class string of type of equipment
 //upgraded: 1 to use upgraded stats, 0 for normal
 //markMode: 1=to enable markmode where clicking marks the element
+//showMark: 1 to render only if marked
 class EquipBox extends React.Component
 {
   constructor(props)
@@ -98,8 +100,14 @@ class EquipBox extends React.Component
       markedState="marked";
     }
 
+    var markHidden="";
+    if (this.props.showMark && !this.state.marked)
+    {
+      markHidden="hidden";
+    }
+
     return (
-      <div className={`equip-box ${this.props.equipType} ${markedState}`}>
+      <div className={`equip-box ${this.props.equipType} ${markedState} ${markHidden}`}>
         <div className="img-hold" onClick={this.toggleMark}>
           <div className="top-img">
             <img src={this.props.data.img}/>
