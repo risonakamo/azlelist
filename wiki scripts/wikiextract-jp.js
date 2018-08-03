@@ -18,7 +18,7 @@ var torpedoOptions={
         },
 
         3:(element)=>{
-            return element.innerText.slice(1);
+            return parseInt(element.innerText.slice(1));
         },
 
         6:(element)=>{
@@ -67,7 +67,7 @@ var gunOptions={
         },
 
         3:(element)=>{
-            return element.innerText.slice(1);
+            return parseInt(element.innerText.slice(1));
         },
 
         6:(element)=>{
@@ -125,7 +125,7 @@ var aaOptions={
         },
 
         3:(element)=>{
-            return element.innerText.slice(1);
+            return parseInt(element.innerText.slice(1));
         },
 
         6:(element)=>{
@@ -164,7 +164,7 @@ var planeOptions={
         },
 
         3:(element)=>{
-            return element.innerText.slice(1);
+            return parseInt(element.innerText.slice(1));
         },
 
         6:(element)=>{
