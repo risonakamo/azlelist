@@ -8,17 +8,18 @@
 {
     display: inline-block;
     margin: 20px;
-    color: black;
+    color: var(--main-colour,black);
     text-align: center;
 }
 
-/*-- image circle section --*/
+/*-- image circlfe section --*/
 .equip-box .img-hold
 {
     display: inline-block;
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    background-color: var(--main-colour);
 }
 
 .equip-box .img-hold>div
@@ -61,7 +62,7 @@
 {
     display: inline-block;
     width: 55%;
-    border-bottom: 3px dashed;
+    border-bottom: 3px dashed var(--main-colour);
 }
 
 .stats

@@ -1,135 +1,44 @@
-.equip-box.torp,.class-button.torp div,.top.torp .sort-button.selected,.top.torp .mark-button.selected
+.top.torp
 {
-    color: #3162ac;
+    --main-colour: #3162ac;
 }
 
-.torp .img-hold,.top.torp .control-menu,.top.torp .side-triangle
+.top.clgun
 {
-    background-color: #3162ac;
+    --main-colour: #f5b200;
 }
 
-.torp .info .divider,.top.torp .float-border
+.top.ddgun
 {
-    border-color: #3162ac;
-}
-
-.equip-box.clgun,.class-button.clgun div,.top.clgun .sort-button.selected,.top.clgun .mark-button.selected
-{
-    color: #f5b200;
-}
-
-.clgun .img-hold,.top.clgun .control-menu,.top.clgun .side-triangle
-{
-    background-color: #f5b200;
-}
-
-.clgun .info .divider,.top.clgun .float-border
-{
-    border-color: #f5b200;
-}
-
-.equip-box.ddgun,.class-button.ddgun div,.top.ddgun .sort-button.selected,.top.ddgun .mark-button.selected
-{
-    color: #cf5b5d;
     --main-colour: #cf5b5d;
 }
 
-.ddgun .img-hold,.top.ddgun .control-menu,.top.ddgun .side-triangle
+.top.cagun
 {
-    background-color: #cf5b5d;
+    --main-colour: #c93e41;
 }
 
-.ddgun .info .divider,.top.ddgun .float-border
+.top.bbgun
 {
-    border-color: #cf5b5d;
+    --main-colour: #bf252a;
 }
 
-.equip-box.cagun,.class-button.cagun div,.top.cagun .sort-button.selected,.top.cagun .mark-button.selected
+.top.aagun
 {
-    color: #c93e41;
+    --main-colour: #39c654;
 }
 
-.cagun .img-hold,.top.cagun .control-menu,.top.cagun .side-triangle
+.top.fighter
 {
-    background-color: #c93e41;
+    --main-colour: #48b063;
 }
 
-.cagun .info .divider,.top.cagun .float-border
+.top.bomber
 {
-    border-color: #c93e41;
+    --main-colour: #2780c2;
 }
 
-.equip-box.bbgun,.class-button.bbgun div,.top.bbgun .sort-button.selected,.top.bbgun .mark-button.selected
+.top.dive
 {
-    color: #bf252a;
-}
-
-.bbgun .img-hold,.top.bbgun .control-menu,.top.bbgun .side-triangle
-{
-    background-color: #bf252a;
-}
-
-.bbgun .info .divider,.top.bbgun .float-border
-{
-    border-color: #bf252a;
-}
-
-.equip-box.aagun,.class-button.aagun div,.top.aagun .sort-button.selected,.top.aagun .mark-button.selected
-{
-    color: #39c654;
-}
-
-.aagun .img-hold,.top.aagun .control-menu,.top.aagun .side-triangle
-{
-    background-color: #39c654;
-}
-
-.aagun .info .divider,.top.aagun .float-border
-{
-    border-color: #39c654;
-}
-
-.equip-box.fighter,.class-button.fighter div,.top.fighter .sort-button.selected,.top.fighter .mark-button.selected
-{
-    color: #48b063;
-}
-
-.fighter .img-hold,.top.fighter .control-menu,.top.fighter .side-triangle
-{
-    background-color: #48b063;
-}
-
-.fighter .info .divider,.top.fighter .float-border
-{
-    border-color: #48b063;
-}
-
-.equip-box.bomber,.class-button.bomber div,.top.bomber .sort-button.selected,.top.bomber .mark-button.selected
-{
-    color: #2780c2;
-}
-
-.bomber .img-hold,.top.bomber .control-menu,.top.bomber .side-triangle
-{
-    background-color: #2780c2;
-}
-
-.bomber .info .divider,.top.bomber .float-border
-{
-    border-color: #2780c2;
-}
-
-.equip-box.dive,.class-button.dive div,.top.dive .sort-button.selected,.top.dive .mark-button.selected
-{
-    color: #f16c6e;
-}
-
-.dive .img-hold,.top.dive .control-menu,.top.dive .side-triangle
-{
-    background-color: #f16c6e;
-}
-
-.dive .info .divider,.top.dive .float-border
-{
-    border-color: #f16c6e;
+    --main-colour: #f16c6e;
 }

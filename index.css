@@ -36,6 +36,7 @@ body
 .control-menu
 {
     width: 70px;
+    background-color: var(--main-colour);
 }
 
 .equipbox-top
@@ -58,6 +59,7 @@ body
     height: 50px;
     width: 7px;
     clip-path: polygon(100% 50%,0% 35%,0% 65%);
+    background-color: var(--main-colour);
 }
 
 .class-holder
@@ -77,7 +79,7 @@ body
 .float-border
 {
     height: 70%;
-    border-left: 1px solid;
+    border-left: 1px solid var(--main-colour);
     margin-left: 5px;
 }
 
@@ -100,6 +102,7 @@ body
     vertical-align: top;
     font-size: 26px;
     padding-top: 5px;
+    color: var(--main-colour);
 }
 
 /*-- control menu --*/
@@ -138,6 +141,7 @@ body
 {
     background-color: white;
     padding: 7px 0 7px 0;
+    color: var(--main-colour);
 }
 
 .sort-button.selected::after
@@ -176,6 +180,7 @@ body
 .mark-button.selected
 {
     background-color: white;
+    color: var(--main-colour);
 }
 
 .mark-buttons .mark-button:first-of-type
