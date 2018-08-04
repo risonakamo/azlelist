@@ -212,6 +212,14 @@ var planeOptions={
     }
 };
 
+//collection of all the options
+var extractOptions={
+    torpedo:torpedoOptions,
+    gun:gunOptions,
+    aa:aaOptions,
+    plane:planeOptions
+};
+
 /*
     table: the element tbody to target. should have only the rows as the children
     extractOptions: object with details on how to extract rows.
@@ -302,3 +310,5 @@ function noBurstDataCalc(data)
     delete data.dmg10;
     delete data.reload10;
 }
+
+module.exports={extractOptions,jpWikiExtract};

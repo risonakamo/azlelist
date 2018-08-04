@@ -1,11 +1,11 @@
 {
   "name": "azlelist",
   "version": "1.0",
-
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "jsdom": "^11.12.0",
     "request": "^2.87.0"
-  }
+  },
+  "dependencies": {}
 }
