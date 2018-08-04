@@ -1,5 +1,8 @@
 window.onload=main;
 
+var _initialmarks;
+var _markUpdateTimer;
+
 function main()
 {
     var dataFiles=["ddgun","clgun","cagun","bbgun",
@@ -10,6 +13,13 @@ function main()
 
     var allData={};
     var processed=0;
+
+    _initialmarks=JSON.parse(localStorage.getItem("marks"));
+
+    if (!_initialmarks)
+    {
+        _initialmarks={};
+    }
 
     dataFiles.forEach((x,i)=>{
         dataLoad(`wikidata/${x}.json`,(data)=>{
@@ -40,4 +50,12 @@ function dataLoad(filename,callback)
     };
 
     r.send();
+}
+
+function queueUpdateMarks()
+{
+    clearInterval(_markUpdateTimer);
+    _markUpdateTimer=setTimeout(()=>{
+        localStorage.setItem("marks",JSON.stringify(_initialmarks));
+    },800);
 }

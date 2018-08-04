@@ -47,8 +47,14 @@ class EquipBox extends React.Component
     this.toggleMark=this.toggleMark.bind(this);
 
     this.state={
-      marked:false
+      marked:0
     };
+
+    if (_initialmarks[this.props.data.name])
+    {
+      this.state.marked=1;
+      this.props.data.marked=1;
+    }
   }
 
   getUpgraded(yes)
@@ -75,8 +81,20 @@ class EquipBox extends React.Component
   {
     if (this.props.markMode)
     {
-      this.setState({marked:!this.state.marked});
+      this.setState({marked:this.state.marked?0:1});
       this.props.data.marked=this.props.data.marked?0:1;
+
+      if (this.props.data.marked)
+      {
+        _initialmarks[this.props.data.name]=1;
+      }
+
+      else
+      {
+        delete _initialmarks[this.props.data.name];
+      }
+
+      queueUpdateMarks();
     }
   }
 

@@ -18,9 +18,10 @@ class AzleListControl extends React.Component {
             showMark: 0
         };
 
+        //sort by stat indexes based off this
         this.sortNames = ["dps", "burst", "dmg", "rarity", "reload", "shot"];
 
-        //this.firstSort=0
+        //this.firstSort=0* whether first sort has happened
     }
 
     componentDidMount() {
