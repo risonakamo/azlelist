@@ -76,6 +76,7 @@ class EquipBox extends React.Component
     if (this.props.markMode)
     {
       this.setState({marked:!this.state.marked});
+      this.props.data.marked=this.props.data.marked?0:1;
     }
   }
 
@@ -95,13 +96,13 @@ class EquipBox extends React.Component
     }
 
     var markedState="";
-    if (this.state.marked)
+    if (this.props.data.marked)
     {
       markedState="marked";
     }
 
     var markHidden="";
-    if (this.props.showMark && !this.state.marked)
+    if (this.props.showMark && !this.props.data.marked)
     {
       markHidden="hidden";
     }
