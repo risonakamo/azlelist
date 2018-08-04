@@ -18,19 +18,19 @@ var torpedoOptions={
         },
 
         3:(element)=>{
-            return parseInt(element.innerText.slice(1));
+            return parseInt(element.textContent.slice(1));
         },
 
         6:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         },
 
         7:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         },
 
         13:(element)=>{
-            if (element.innerText=="通常弾")
+            if (element.textContent=="通常弾")
             {
                 return 0;
             }
@@ -67,19 +67,19 @@ var gunOptions={
         },
 
         3:(element)=>{
-            return parseInt(element.innerText.slice(1));
+            return parseInt(element.textContent.slice(1));
         },
 
         6:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         },
 
         7:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         },
 
         14:(element)=>{
-            var type=element.innerText;
+            var type=element.textContent;
             switch (type)
             {
                 case "通常弾":
@@ -125,15 +125,15 @@ var aaOptions={
         },
 
         3:(element)=>{
-            return parseInt(element.innerText.slice(1));
+            return parseInt(element.textContent.slice(1));
         },
 
         6:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         },
 
         7:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         }
     },
 
@@ -164,15 +164,15 @@ var planeOptions={
         },
 
         3:(element)=>{
-            return parseInt(element.innerText.slice(1));
+            return parseInt(element.textContent.slice(1));
         },
 
         6:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         },
 
         7:(element)=>{
-            return parseFloat(element.innerText);
+            return parseFloat(element.textContent);
         }
     },
 
@@ -252,7 +252,7 @@ function jpWikiExtract(table,extractOptions)
 
             else
             {
-                currentRowData[extractOptions.cols[y]]=currentRowChildren[y].innerText;
+                currentRowData[extractOptions.cols[y]]=currentRowChildren[y].textContent;
             }
         }
 

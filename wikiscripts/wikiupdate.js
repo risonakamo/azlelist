@@ -15,6 +15,6 @@ request.get(
         var document=new JSDOM(iconv.convert(body).toString("utf8")).window.document;
 
         // console.log(document.querySelectorAll(".ie5 tbody")[1].innerText);
-        // console.log(jpWikiExtract(document.querySelectorAll(".ie5 tbody")[1],extractOptions.torpedo));
+        console.log(jpWikiExtract(document.querySelectorAll(".ie5 tbody")[1],extractOptions.torpedo));
     }
 );
