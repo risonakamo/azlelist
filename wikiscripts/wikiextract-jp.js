@@ -1,3 +1,6 @@
+//needed for node which doesnt get the root url in scrape?
+var urlrootmod="http://azurlane.wikiru.jp/";
+
 //usable on torpedoes,sub torpedoes
 var torpedoOptions={
     cols:{
@@ -14,7 +17,10 @@ var torpedoOptions={
 
     modifiers:{
         0:(element)=>{
-            return element.firstChild.src;
+            if (element.firstChild.src)
+            {
+                return urlrootmod+element.firstChild.src;
+            }
         },
 
         3:(element)=>{
@@ -60,7 +66,7 @@ var gunOptions={
         0:(element)=>{
             if (element.firstChild)
             {
-                return element.firstChild.src;
+                return urlrootmod+element.firstChild.src;
             }
 
             return null;
@@ -118,7 +124,7 @@ var aaOptions={
         0:(element)=>{
             if (element.firstChild)
             {
-                return element.firstChild.src;
+                return urlrootmod+element.firstChild.src;
             }
 
             return null;
@@ -157,7 +163,7 @@ var planeOptions={
         0:(element)=>{
             if (element.firstChild)
             {
-                return element.firstChild.src;
+                return urlrootmod+element.firstChild.src;
             }
 
             return null;

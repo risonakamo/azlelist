@@ -1,12 +1,21 @@
 const request=require("request");
 const IconV=require("iconv").Iconv;
 const {JSDOM}=require("jsdom");
+const fs=require("fs");
 
 const {jpWikiExtract,extractOptions}=require("./wikiextract-jp");
 
+var urls=[
+
+];
+
+var equipfilenames=[
+
+];
+
 request.get(
     {
-        url:"http://azurlane.wikiru.jp/index.php?%B4%CF%CB%A4%A5%EA%A5%B9%A5%C8%2F%B6%EE%C3%E0%B4%CF%BC%E7%CB%A4",
+        url:"http://azurlane.wikiru.jp/index.php?%B5%FB%CD%EB%A5%EA%A5%B9%A5%C8",
         encoding:null
     },
     (err,res,body)=>{
@@ -14,7 +23,6 @@ request.get(
 
         var document=new JSDOM(iconv.convert(body).toString("utf8")).window.document;
 
-        // console.log(document.querySelectorAll(".ie5 tbody")[1].innerText);
-        console.log(jpWikiExtract(document.querySelectorAll(".ie5 tbody")[1],extractOptions.torpedo));
+        fs.writeFile("torp.json",jpWikiExtract(document.querySelectorAll(".ie5 tbody")[1],extractOptions.torpedo),()=>{});
     }
 );
