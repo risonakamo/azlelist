@@ -11,7 +11,7 @@ var defaultIndex=1;
 var updateSources=[
     {
         url:"http://azurlane.wikiru.jp/index.php?%C2%D0%B6%F5%CB%A4%A5%EA%A5%B9%A5%C8",
-        filename:"aa.json",
+        filename:"aagun.json",
         selector:defaultSelector,
         selectorIndex:defaultIndex,
         options:extractOptions.aa

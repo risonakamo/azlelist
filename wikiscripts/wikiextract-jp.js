@@ -16,12 +16,7 @@ var torpedoOptions={
     },
 
     modifiers:{
-        0:(element)=>{
-            if (element.firstChild.src)
-            {
-                return urlrootmod+element.firstChild.src;
-            }
-        },
+        0:defaultImgModifier,
 
         3:(element)=>{
             return parseInt(element.textContent.slice(1));
@@ -63,14 +58,7 @@ var gunOptions={
     },
 
     modifiers:{
-        0:(element)=>{
-            if (element.firstChild)
-            {
-                return urlrootmod+element.firstChild.src;
-            }
-
-            return null;
-        },
+        0:defaultImgModifier,
 
         3:(element)=>{
             return parseInt(element.textContent.slice(1));
@@ -121,14 +109,7 @@ var aaOptions={
     },
 
     modifiers:{
-        0:(element)=>{
-            if (element.firstChild)
-            {
-                return urlrootmod+element.firstChild.src;
-            }
-
-            return null;
-        },
+        0:defaultImgModifier,
 
         3:(element)=>{
             return parseInt(element.textContent.slice(1));
@@ -160,14 +141,7 @@ var planeOptions={
     },
 
     modifiers:{
-        0:(element)=>{
-            if (element.firstChild)
-            {
-                return urlrootmod+element.firstChild.src;
-            }
-
-            return null;
-        },
+        0:defaultImgModifier,
 
         3:(element)=>{
             return parseInt(element.textContent.slice(1));
@@ -315,6 +289,21 @@ function noBurstDataCalc(data)
 
     delete data.dmg10;
     delete data.reload10;
+}
+
+function defaultImgModifier(element)
+{
+    if (element.firstChild.src)
+    {
+        if (element.firstChild.src.slice(0,4)!="http")
+        {
+            return urlrootmod+element.firstChild.src;
+        }
+
+        return element.firstChild.src;
+    }
+
+    return null;
 }
 
 module.exports={extractOptions,jpWikiExtract};
