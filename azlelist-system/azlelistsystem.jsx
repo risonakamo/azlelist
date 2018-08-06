@@ -24,6 +24,7 @@ class AzleListControl extends React.Component
         this.sortNames=["dps","burst","dmg","rarity","reload","shot"];
 
         //this.firstSort=0* whether first sort has happened
+        this.sortMenu=React.createRef(); //sort menu component
     }
 
     componentDidMount()
@@ -37,7 +38,11 @@ class AzleListControl extends React.Component
     //give it the INDEX of the new class to set the current class to
     changeCurrentClass(newclass)
     {
-        this.setState({currentClass:newclass});
+        this.setState({currentClass:newclass},()=>{
+            this.sortByStat(this.sortMenu.current.state.selectedSort,
+                this.sortMenu.current.state.sortDirection,
+                this.sortMenu.current.state.selectedUpgrade);
+        });
     }
 
     //sortByStat(int stat,int direction,int upgraded)
@@ -138,7 +143,7 @@ class AzleListControl extends React.Component
 
             ReactDOM.createPortal(<SortControlMenu sortStat={this.sortByStat}
                 toggleMarkMode={this.toggleMarkMode} showMarkMode={this.toggleShowMarks}
-                />,document.querySelector(".control-menu"))
+                ref={this.sortMenu}/>,document.querySelector(".control-menu"))
         ];
     }
 }
