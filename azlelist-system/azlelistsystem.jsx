@@ -137,6 +137,8 @@ class AzleListControl extends React.Component
         return [
             equipBoxes,
 
+            <div className="background"></div>,
+
             ReactDOM.createPortal(<EquipClassMenu equipClassNames={this.props.dataClassNames}
                 classNamesJp={this.props.classNamesJp} parentChangeClass={this.changeCurrentClass}/>,
                 document.querySelector(".class-menu")),

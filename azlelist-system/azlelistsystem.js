@@ -108,7 +108,7 @@ class AzleListControl extends React.Component {
                 upgraded: this.state.upgraded, markMode: markMode, showMark: showMark }));
         }
 
-        return [equipBoxes, ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
+        return [equipBoxes, React.createElement("div", { className: "background" }), ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
             classNamesJp: this.props.classNamesJp, parentChangeClass: this.changeCurrentClass }), document.querySelector(".class-menu")), ReactDOM.createPortal(React.createElement(SortControlMenu, { sortStat: this.sortByStat,
             toggleMarkMode: this.toggleMarkMode, showMarkMode: this.toggleShowMarks,
             ref: this.sortMenu }), document.querySelector(".control-menu"))];
