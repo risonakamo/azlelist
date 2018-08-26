@@ -2,7 +2,8 @@
   "name": "azlelist",
   "version": "1.0",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-minify": "^0.4.3",
     "babel-preset-react": "^6.24.1",
     "iconv": "^2.3.0",
     "jsdom": "^11.12.0",
