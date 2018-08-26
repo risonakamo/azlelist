@@ -1,8 +1,10 @@
+//parents: AzleListControl in azlelistsystem
 //SortControlMenu(function sortStat,function toggleMarkMode,function showMarkMode)
 //sortStat(int stat,int direction,int upgraded): function from parent to
 //call with data from this object
 //toggleMarkMode(): parent function to activate markmode
 //showMarkMode(): parent function to toggle show marks
+//clearMarks(): parent function to clear marks
 class SortControlMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,8 @@ class SortControlMenu extends React.Component {
     this.sendSortData = this.sendSortData.bind(this);
     this.setMarkEvent = this.setMarkEvent.bind(this);
     this.showMarkEvent = this.showMarkEvent.bind(this);
+    this.clearMarksEvent = this.clearMarksEvent.bind(this);
+    this.markButtonLoaded = this.markButtonLoaded.bind(this);
 
     this.state = {
       sortDirection: 1, //ascending or descending sort
@@ -19,6 +23,7 @@ class SortControlMenu extends React.Component {
     };
 
     this.sortDirections = ["", "desc"];
+    this.markButtons = [];
   }
 
   //switch the current sort to one specfied by index, propogates up
@@ -41,14 +46,28 @@ class SortControlMenu extends React.Component {
     this.props.sortStat(this.state.selectedSort, this.state.sortDirection, this.state.selectedUpgrade);
   }
 
+  //event handler for toggling mark mode button
   setMarkEvent(e) {
     e.currentTarget.classList.toggle("selected");
     this.props.toggleMarkMode();
   }
 
+  //event handler for show marks button
   showMarkEvent(e) {
     e.currentTarget.classList.toggle("selected");
     this.props.showMarkMode();
+  }
+
+  //event handler for clear mark event button
+  clearMarksEvent() {
+    this.markButtons[0].classList.remove("selected");
+    this.markButtons[1].classList.remove("selected");
+    this.props.clearMarks();
+  }
+
+  //on load for mark buttons
+  markButtonLoaded(ref) {
+    this.markButtons.push(ref);
   }
 
   render() {
@@ -119,10 +138,10 @@ class SortControlMenu extends React.Component {
       React.createElement(
         "div",
         { className: "mark-buttons" },
-        [["SET", this.setMarkEvent], ["SHOW", this.showMarkEvent], ["CLEAR", null]].map((x, i) => {
+        [["SET", this.setMarkEvent], ["SHOW", this.showMarkEvent], ["CLEAR", this.clearMarksEvent]].map((x, i) => {
           return React.createElement(
             "div",
-            { className: "mark-button", key: i, onClick: x[1] },
+            { className: "mark-button", key: i, onClick: x[1], ref: this.markButtonLoaded },
             x[0]
           );
         })

@@ -9,6 +9,7 @@ class AzleListControl extends React.Component {
         this.sortByStat = this.sortByStat.bind(this);
         this.toggleMarkMode = this.toggleMarkMode.bind(this);
         this.toggleShowMarks = this.toggleShowMarks.bind(this);
+        this.clearMarks = this.clearMarks.bind(this);
 
         this.state = {
             currentClass: 0, //index of the current class relative to the dataClassNames object
@@ -84,6 +85,12 @@ class AzleListControl extends React.Component {
         this.setState({ showMark: this.state.showMark ? 0 : 1 });
     }
 
+    //reset the markmode and showmark after clearing marks
+    clearMarks() {
+        localStorage.removeItem("marks");
+        this.setState({ showMark: 0, markMode: 0 });
+    }
+
     render() {
         var equipBoxes = [];
         var enabled;
@@ -111,6 +118,6 @@ class AzleListControl extends React.Component {
         return [equipBoxes, React.createElement("div", { className: "background" }), ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
             classNamesJp: this.props.classNamesJp, parentChangeClass: this.changeCurrentClass }), document.querySelector(".class-menu")), ReactDOM.createPortal(React.createElement(SortControlMenu, { sortStat: this.sortByStat,
             toggleMarkMode: this.toggleMarkMode, showMarkMode: this.toggleShowMarks,
-            ref: this.sortMenu }), document.querySelector(".control-menu"))];
+            clearMarks: this.clearMarks, ref: this.sortMenu }), document.querySelector(".control-menu"))];
     }
 }
