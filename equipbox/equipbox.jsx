@@ -7,6 +7,26 @@
 //showMark: 1=show only marked boxes
 class EquipBoxControl extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.resetMarks=this.resetMarks.bind(this);
+
+    this.equipBoxes=[];
+  }
+
+  //reset equipbox marks
+  resetMarks()
+  {
+    for (var x=0,l=this.equipBoxes.length;x<l;x++)
+    {
+      if (this.equipBoxes[x])
+      {
+        this.equipBoxes[x].resetMarks();
+      }
+    }
+  }
+
   render()
   {
     var enabled="";
@@ -25,7 +45,13 @@ class EquipBoxControl extends React.Component
       <div className={`equip-boxes ${enabled} ${markMode}`}>
         {this.props.data.map((x,i)=>{
           return <EquipBox data={x} key={i} equipType={this.props.equipType}
-            upgraded={this.props.upgraded} markMode={this.props.markMode} showMark={this.props.showMark}/>;
+            upgraded={this.props.upgraded} markMode={this.props.markMode} showMark={this.props.showMark}
+            ref={(ref)=>{
+              if (ref)
+              {
+                this.equipBoxes.push(ref);
+              }
+            }}/>;
         })}
       </div>
     );
@@ -45,6 +71,7 @@ class EquipBox extends React.Component
     super(props);
     this.getUpgraded=this.getUpgraded.bind(this);
     this.toggleMark=this.toggleMark.bind(this);
+    this.resetMarks=this.resetMarks.bind(this);
 
     this.state={
       marked:0
@@ -95,6 +122,15 @@ class EquipBox extends React.Component
       }
 
       queueUpdateMarks();
+    }
+  }
+
+  resetMarks()
+  {
+    if (this.props.data.marked)
+    {
+      this.setState({marked:0});
+      this.props.data.marked=0;
     }
   }
 

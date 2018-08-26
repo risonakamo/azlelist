@@ -24,6 +24,8 @@ class AzleListControl extends React.Component {
 
         //this.firstSort=0* whether first sort has happened
         this.sortMenu = React.createRef(); //sort menu component
+
+        this.equipControls = [];
     }
 
     componentDidMount() {
@@ -88,7 +90,14 @@ class AzleListControl extends React.Component {
     //reset the markmode and showmark after clearing marks
     clearMarks() {
         localStorage.removeItem("marks");
+        _initialmarks = {};
         this.setState({ showMark: 0, markMode: 0 });
+
+        for (var x = 0, l = this.equipControls.length; x < l; x++) {
+            if (this.equipControls[x]) {
+                this.equipControls[x].resetMarks();
+            }
+        }
     }
 
     render() {
@@ -112,7 +121,10 @@ class AzleListControl extends React.Component {
 
             equipBoxes.push(React.createElement(EquipBoxControl, { data: this.props.allData[currentClass],
                 equipType: currentClass, key: x, enabled: enabled,
-                upgraded: this.state.upgraded, markMode: markMode, showMark: showMark }));
+                upgraded: this.state.upgraded, markMode: markMode, showMark: showMark,
+                ref: ref => {
+                    this.equipControls.push(ref);
+                } }));
         }
 
         return [equipBoxes, React.createElement("div", { className: "background" }), ReactDOM.createPortal(React.createElement(EquipClassMenu, { equipClassNames: this.props.dataClassNames,
