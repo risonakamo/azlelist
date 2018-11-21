@@ -1,5 +1,5 @@
 const request=require("request");
-const IconV=require("iconv").Iconv;
+const iconv=require("iconv-lite");
 const {JSDOM}=require("jsdom");
 const fs=require("fs");
 
@@ -90,8 +90,7 @@ function callbackloopUpdateSources(index)
         },
         (err,res,body)=>{
             console.log(x.filename);
-            var iconv=new IconV("EUC-JP","utf-8//IGNORE");
-            var document=new JSDOM(iconv.convert(body).toString("utf8")).window.document;
+            var document=new JSDOM(iconv.decode(Buffer.from(body),"EUC-JP").toString("utf8")).window.document;
 
             fs.writeFile(x.filename,jpWikiExtract(document.querySelectorAll(x.selector)[x.selectorIndex],x.options),()=>{});
 
