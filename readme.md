@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/last%20data%20update-21%20Nov%202018-green.svg)
+
 # AzLEList
 **Azur Lane Equipment List** is a website for organising Azur Lane equipment data.
 
