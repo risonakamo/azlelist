@@ -5,3 +5,5 @@
 
 Equipment can be sorted and marked.  "SHOW" can be pressed to display only marked equipment.
 ![](https://i.imgur.com/UJ1wUWF.png)
+
+!! watch out for the clear button !!
