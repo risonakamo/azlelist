@@ -1,6 +1,6 @@
 {
   "name": "azlelist",
-  "version": "1.0",
+  "version": "1.0.7",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-minify": "^0.4.3",
