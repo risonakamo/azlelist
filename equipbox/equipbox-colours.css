@@ -42,3 +42,8 @@
 {
     --main-colour: #f16c6e;
 }
+
+.top.subtorp,.class-button.subtorp div
+{
+    --main-colour: #0fb675;
+}

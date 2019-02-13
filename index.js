@@ -6,10 +6,10 @@ var _markUpdateTimer;
 function main()
 {
     var dataFiles=["ddgun","clgun","cagun","bbgun",
-        "torp","aagun","fighter","dive","bomber"];
+        "torp","aagun","fighter","dive","bomber","subtorp"];
 
     var classNamesJp=["駆逐艦主砲","軽巡主砲","重巡主砲","戦艦主砲",
-        "魚雷","対空砲","戦闘機","爆撃機","攻撃機"];
+        "魚雷","対空砲","戦闘機","爆撃機","攻撃機","潜水艦魚雷"];
 
     var allData={};
     var processed=0;
