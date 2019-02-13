@@ -71,6 +71,13 @@ var updateSources=[
         selector:defaultSelector,
         selectorIndex:defaultIndex,
         options:extractOptions.torpedo
+    },
+    {
+        url:"http://azurlane.wikiru.jp/index.php?%B5%FB%CD%EB%A5%EA%A5%B9%A5%C8",
+        filename:"subtorp.json",
+        selector:defaultSelector,
+        selectorIndex:2,
+        options:extractOptions.torpedo
     }
 ];
 

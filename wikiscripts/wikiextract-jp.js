@@ -293,7 +293,7 @@ function noBurstDataCalc(data)
 
 function defaultImgModifier(element)
 {
-    if (element.firstChild.src)
+    if (element.firstChild && element.firstChild.src)
     {
         if (element.firstChild.src.slice(0,4)!="http")
         {
